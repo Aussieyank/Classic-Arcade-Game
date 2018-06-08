@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8">
+   <title>Lady Bugger</title>
+   <meta name="viewport" content="width=device-width, minimum-scale=1.0"/>
+   <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+   <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
+   <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Spinnaker">
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/keyframes.css">
+   <link rel="stylesheet" href="css/modal.css">
+   <link rel="stylesheet" href="css/screen.css">
+</head>
+<body>
+<h1>Lady Bugger</h1>
+
+<!-- 'Pick Your Character' Modal -->
+<section id="setup-game" class="modal character__setup active">
+   <header class="character__header">
+      <h2>Pick Your Character</h2>
+   </header>
+
+   <div class="character__content">
+
+      <ul class="character__container">
+         <li class="character__image animated ">
+            <img src="images/char-boy.png" width="101" height="171" class="charImg animated zoomIn" data-avatar="char-boy" alt="Boy Character">
+         </li>
+         <li class="character__image animated ">
+            <img src="images/char-cat-girl.png" width="101" height="171" class="charImg animated" data-avatar="char-cat-girl" alt="Cat Girl Character">
+         </li>
+         <li class="character__image animated ">
+            <img src="images/char-horn-girl.png" width="101" height="171" class="charImg animated" data-avatar="char-horn-girl" alt="Horn Girl Character">
+         </li>
+         <li class="character__image animated ">
+            <img src="images/char-pink-girl.png" width="101" height="171" class="charImg animated" data-avatar="char-pink-girl" alt="Pink Girl Character">
+         </li>
+         <li class="character__image animated ">
+            <img src="images/char-princess-girl.png" width="101" height="171" class="charImg animated" data-avatar="char-princess-girl" alt="Princess Girl Character">
+         </li>
+      </ul>
+   </div>
+   <footer class="character__footer">
+      <button id="button__setup-game" class="button keep-playing hide animated zoomIn">Play</button>
+   </footer>
+
+</section>
+
+<!-- 'Game Over' Modal -->
+<section id="won-game" class="modal none modal__won-game">
+   <div class="modal-content">
+      <div class="loader">
+         <i class="fa fa-check" aria-hidden="true"></i>
+      </div>
+      <h2>Congratulations! You Won!</h2>
+      <p id="wonHTML"></p>
+      <button id='button__won-game' class="button keep-playing animated zoomIn">Play again!
+      </button>
+   </div>
+</section>
+
+<!-- 'You lost' Modal -->
+<section id="lost-game" class="modal none modal__lost-game">
+   <div class="modal-content">
+      <div class="loader">
+         <i class="fa fa-clock-o" aria-hidden="true"></i>
+      </div>
+      <h2>Oh bummer, you lost!</h2>
+      <p id="lostHTML"></p>
+      <p>Sorry, but the clock ran out before you could complete this round.</p>
+      <p class="messageHTML"></p>
+      <button id='button__lost-game' class="button keep-playing">Play again!
+      </button>
+   </div>
+</section>
+
+<script src="js/views/Modal.js"></script>
+<script src="js/canvas.js"></script>
+<script src="js/app.js"></script>
+<script src="js/resources.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/views/View.js"></script>
+<script src="js/players/Player.js"></script>
+<script src="js/players/Enemy.js"></script>
+</body>
+</html>
