@@ -1,9 +1,19 @@
+// this.setupGame = document.getElementById('setup-game');
+// this.setupGame.classList.add('active');
+// this.setupGame.classList.remove('none');
+// document.getElementById('setup-game').classes.add('active');
+// document.getElementById('setup-game').classes.remove('none');
+
+
 class Modal {
 
    constructor(modalID) {
-      this.modal = document.getElementById(modalID);
+      this.setupGame   = document.getElementById('setup-game');
+      this.avatar      = document.querySelectorAll('.charImg');
+      this.modal       = document.getElementById(modalID);
       this.keepPlaying = this.modal.getElementsByClassName('keep-playing')[0];
-      this.score = this.modal.getElementsByClassName('keep-score')[0];
+      this.score       = this.modal.getElementsByClassName('keep-score')[0];
+      this.theAvatar   = 0;
    }
 
    /**
@@ -11,8 +21,10 @@ class Modal {
     * @param keepScore
     */
    show(keepScore = 0) {
-      this.score[0].innerHTML = this.score;
-      this.classes.add('active');
+      //this.score[0].innerHTML = this.score;
+      //this.classes.add('active');
+      this.setupGame.classList.add('active');
+      this.setupGame.classList.remove('none');
    }
 
    /**
@@ -24,10 +36,11 @@ class Modal {
    }
 
    /**
-    * @description Show the button to pick the avetar
+    * @description Show the button to pick the avatar
     */
    showButton() {
       this.keepPlaying.classList.add('active');
+      this.keepPlaying.classList.remove('none');
    }
 
    /**
@@ -38,45 +51,89 @@ class Modal {
    }
 
    pickAvatar(avatar) {
-      const allAvatars = Array.from(document.querySelectorAll('.character__image'));
-      let theAvatar;
+      const allAvatars = Array.from(document.querySelectorAll('.charImg'));
+      let theAvatar = 0,
+          getAvatar = 0;
 
-      for (avatar of allAvatars) {
+      for ( let k = 0; k < allAvatars.length; k++ ) {
+         allAvatars[k].addEventListener('click', function (e) {
+            //theAvatar = JSON.stringify(allAvatars[k].getAttribute('data-avatar'), null, 4);
+            theAvatar = allAvatars[k].getAttribute('data-avatar');
+            alert(theAvatar);
+            console.log(theAvatar); // JSON.parse
+            //debugger
+            let getAvatar = document.getElementById(theAvatar).classList;
+            alert(getAvatar);
 
-         avatar.addEventListener('click', function (e) {
-            event.preventDefault();
-            //setTimeout(function () {
-               avatar.classList.add('bounceInDown');
-               theAvatar = avatar.children[0].getAttribute('data-avatar');
-               //debugger
-               //alert('k: ' + theAvatar);
-               avatar.classList.remove('active');
-               //hide();
-            //}, 600);  // timeout
-         });
+            document.getElementById(theAvatar).classList.add('active');
+            document.getElementById(theAvatar).classList.remove('none');
+            return(getAvatar);
+
+         }, false);
       }
    }
 
-   // closeSetupGame() {
-   //    event.preventDefault();
-   //    setupClasses.remove( 'active' );
-   //    setupClasses.add( 'none' );
-   //    setupGame.hide();
-   //    setupGame.hideButton();
-   //    alert('in setup button');
-   //    //console.log('in setupButton');
-   //    //location.reload();
-   // }
-   //setupButton = document.getElementById( 'button__setup-game' );
-   //setupGame.addEventListener('click', closeSetupGame, false);
-   //setupGame = document.getElementById( 'setup-game' );
 
+   startModal(getAvatar) {
+      document.getElementsByTagName('body')[0].addEventListener('click', function (event) {
+         const allAvatars = Array.from(document.querySelectorAll('.charImg'));
+         event.stopPropagation();
+         let theAvatar = 0;
+
+         // Changing the player's character.
+         if (event.target.classList.contains('charImg') ||
+            event.target.nodeName == 'IMG' &&
+            event.target.parentNode.classList.contains('character__image')) {
+            alert( 'startModal before add: ' + getAvatar );
+            // document.getElementById(theAvatar).classList.add('zoomIn');
+            // document.getElementById(theAvatar).classList.add('zoomIn');
+            //avatar.classList.add('zoomIn');
+         }
+         theAvatar = setupGame.pickAvatar('char-boy');
+         alert( 'startModal: ' + theAvatar );
+
+      }.bind(this), false);
+   }
+
+   updatePlayerCharacter(target) {
+      if (!(target.classList.contains('character__image') ||
+         target.nodeName == 'IMG' &&
+         target.parentNode.classList.contains('character__image'))) {
+         return false;
+      }
+
+      let li = void 0,
+         img = void 0;
+      if (target.nodeName == 'IMG') {
+         li = target.parentNode;
+         img = target;
+      } else {
+         li = target;
+         img = target.getElementsByTagName('img')[0];
+      }
+
+      this._modals.setup.pickAvatar(li);
+      this._player.setSprite(img.getAttribute('src'),
+         // this is our callback, which will run once the image is loaded.
+         // we are passing the object to set `this` to our modal.
+         {obj: this._modals.setup, cb: this._modals.setup.showPlayButton});
+
+      return false;
+   }
+
+
+   //const setup     = new Modal('setup');
+   // const wonModal = new Modal('won-game');
+   // const lostModal = new Modal('lost-game');
 }
 
+setupGame = new Modal('setup-game');
+//alert( 'setupGame' );
+setupGame.startModal();
+setupGame.show();
+setupGame.showButton();
 
-const setupGame = new Modal('setup-game');
-
-setupGame.pickAvatar('char-boy');
+//setupGame.pickAvatar('char-boy');
 
 // let setupClasses  = document.getElementById( 'setup-game' ).classList,
 //    wonClasses  = document.getElementById( 'won-game' ).classList,
