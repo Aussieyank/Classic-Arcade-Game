@@ -48,7 +48,7 @@ function closeSetupModal() {
       //setupClasses.add( 'none' )
       setupClasses.add('bounceInDown');
       setupGame.hide();
-      setupGame.hideButton();
+      //setupGame.hideButton();
       //alert('in setup button');
       //console.log('in setupButton');
       //location.reload();
