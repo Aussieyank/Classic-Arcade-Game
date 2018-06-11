@@ -59,9 +59,9 @@ document.addEventListener('keyup', function (e) {
    player.handleInput(allowedKeys[e.keyCode]);
 });
 
-const avatarModalIdConfig = {
+const setupAvatarModalConfig = {
    this.modal         = document.getElementById(modalID);
-   this.avatarModalId = document.getElementById('avatar-modal-Id');
+   this.setupAvatarModal = document.getElementById('setup-avatar-modal');
    this.playButton    = document.getElementsByClassName('play-button')[0];
    this.score         = this.modal.getElementsByClassName('score');
 
@@ -82,9 +82,9 @@ const lostGameConfig = {
 
 
 
-const avatarModalId = new Modal('avatar-modal-Id');
-let oneAvatar           = avatarModalId.getAvatar();
-avatarModalId.show();
+const setupAvatarModal = new Modal('setup-avatar-modal');
+let oneAvatar           = setupAvatarModal.getAvatar();
+setupAvatarModal.show();
 
 // const oneGame  = new Modal('game');
 // let daAvatar   = oneGame.getAvatar();

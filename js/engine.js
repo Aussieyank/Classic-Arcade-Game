@@ -61,7 +61,7 @@ const Engine = (function (global = this) {
 
    /* This function does some initial setup that should only occur once,
     * particularly setting the lastTime variable that is required for the
-    * game loop.
+    * game loop
     */
    function init() {
       reset();
@@ -91,10 +91,10 @@ const Engine = (function (global = this) {
     * render methods.
     */
    function updateEntities(dt) {
-      allEnemies.forEach(function (enemy) {
+      let allEnemies.forEach(function (enemy) {
          enemy.update(dt);
       });
-      player.update();
+      let player.update();
    }
 
    /* This function initially draws the "game level", it will then call

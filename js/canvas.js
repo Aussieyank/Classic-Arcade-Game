@@ -29,11 +29,11 @@
    //    });
    //});
 
-let setupClasses = document.getElementById('avatar-modal-Id').classList,
+let setupClasses = document.getElementById('setup-avatar-modal').classList,
    wonClasses    = document.getElementById('won-game').classList,
    lostClasses   = document.getElementById('lost-game').classList,
 
-   setupButton = document.getElementById('button__avatar-modal-Id'),
+   setupButton = document.getElementById('button__setup-avatar-modal'),
    lostButton  = document.getElementById('button__lost-game'),
    wonButton   = document.getElementById('button__won-game');
 
@@ -47,8 +47,8 @@ function closeSetupModal() {
       //setupClasses.remove( 'active' )
       //setupClasses.add( 'none' )
       setupClasses.add('bounceInDown');
-      avatarModalId.hide();
-      //avatarModalId.hideButton();
+      setupAvatarModal.hide();
+      //setupAvatarModal.hideButton();
       //alert('in setup button');
       //console.log('in setupButton');
       //location.reload();

@@ -4,15 +4,15 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-// let setupClasses  = document.getElementById( 'avatar-modal-Id' ).classList,
+// let setupClasses  = document.getElementById( 'setup-avatar-modal' ).classList,
 //       wonClasses  = document.getElementById( 'won-game' ).classList,
 //       lostClasses = document.getElementById( 'lost-game' ).classList,
 //
-//       setupButton = document.getElementById( 'button__avatar-modal-Id' ),
+//       setupButton = document.getElementById( 'button__setup-avatar-modal' ),
 //        lostButton = document.getElementById( 'button__lost-game' ),
 //         wonButton = document.getElementById( 'button__won-game' )
 
-//modals = {avatarModalId: {}, wonModal: {}, lostModal: {}};
+//modals = {setupAvatarModal: {}, wonModal: {}, lostModal: {}};
 
 
 // Enemies our player must avoid
@@ -62,12 +62,12 @@ var Player = function () {
 }();
 
 // Now instantiate your objects.
-// Place all enemy objects in an array called allEnemies
+// Place all enemy objects in an array called setup-avatar-modal
 // Place the player object in a variable called player
 
 
 var player = new Player();
-var allEnemies = [];
+var setup-avatar-modal = [];
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.

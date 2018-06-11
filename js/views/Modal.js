@@ -1,10 +1,10 @@
 class Modal {
 
    constructor(modalID) {
-      this.modal         = document.getElementById(modalID);
-      this.avatarModalId = document.getElementById('avatar-modal-Id');
-      this.playButton    = document.getElementsByClassName('play-button')[0];
-      this.score         = this.modal.getElementsByClassName('score');
+      this.modal2            = document.getElementById(modalID);
+      this.setupAvatarModal = document.getElementById('setup-avatar-modal');
+      this.playButton       = document.getElementsByClassName('play-button')[0];
+      this.score            = this.modal2.getElementsByClassName('score');
    }
 
    /**
@@ -12,8 +12,8 @@ class Modal {
     * @param keepScore
     */
    show(keepScore = 0) {
-      this.avatarModalId.classList.add('active');
-      this.avatarModalId.classList.remove('none');
+      this.setupAvatarModal.classList.add('active');
+      this.setupAvatarModal.classList.remove('none');
       this.playButton.classList.add('active');
       this.playButton.classList.remove('none');
    }
