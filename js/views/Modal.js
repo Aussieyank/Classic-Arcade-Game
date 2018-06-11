@@ -1,9 +1,10 @@
 class Modal {
 
    constructor(modalID) {
-      this.setupGame = document.getElementById('setup-game');
-      this.modal = document.getElementById(modalID);
-      this.keepPlaying = this.modal.getElementsByClassName('keep-playing')[0];
+      this.modal         = document.getElementById(modalID);
+      this.avatarModalId = document.getElementById('avatar-modal-Id');
+      this.playButton    = document.getElementsByClassName('play-button')[0];
+      this.score         = this.modal.getElementsByClassName('score');
    }
 
    /**
@@ -11,10 +12,10 @@ class Modal {
     * @param keepScore
     */
    show(keepScore = 0) {
-      this.setupGame.classList.add('active');
-      this.setupGame.classList.remove('none');
-      this.keepPlaying.classList.remove('none');
-      this.keepPlaying.classList.add('active');
+      this.avatarModalId.classList.add('active');
+      this.avatarModalId.classList.remove('none');
+      this.playButton.classList.add('active');
+      this.playButton.classList.remove('none');
    }
 
    /**
@@ -22,21 +23,24 @@ class Modal {
     */
    hide() {
       this.modal.classList.remove('active');
-      this.keepPlaying.classList.remove('active');
-      this.keepPlaying.classList.add('none');
+      this.playButton.classList.remove('active');
+      this.playButton.classList.add('none');
    }
-
 
    /**
     * @description
     *
     */
-   startModal() {
-      let theAvatar;
-      let getAvatar;
-      let charBlock;
+   getAvatar() {
+      let oneAvatar;
+      let getAvatarClassList;
 
       const allAvatars = Array.from(document.querySelectorAll('.charImg'));
+      const charBlock  = document.getElementsByClassName('character__image');
+
+      for (let k = 0; k < allAvatars.length; k++) {
+         charBlock[k].classList.remove('active');
+      }
 
       for (let k = 0; k < allAvatars.length; k++) {
          let hasSent = false;
@@ -44,17 +48,25 @@ class Modal {
          allAvatars[k].addEventListener('click', function (e) {
             event.preventDefault();
 
-            theAvatar = allAvatars[k].getAttribute('data-avatar');
+            oneAvatar = allAvatars[k].getAttribute('data-avatar');
+            getAvatarClassList = document.getElementById(oneAvatar).classList;
 
-            getAvatar = document.getElementById(theAvatar).classList;
-            charBlock = document.getElementsByClassName('character__image')[0].classList;
-            getAvatar.add('active');
-            getAvatar.remove('hide');
-            getAvatar.add('zoomIn');
+            const charBlock = document.getElementsByClassName('character__image');
+            charBlock[k].classList.remove('hide');
+            charBlock[k].classList.add('active');
+            charBlock[k].classList.add('animated');
+            charBlock[k].classList.add('rubberBand');
+
+            getAvatarClassList.add('active');
+            getAvatarClassList.remove('hide');
+            //alert('getAvatarClassList: ' + getAvatarClassList);
+
 
             if (false === hasSent) {
-               console.log(theAvatar); // JSON.parse
+               console.log(oneAvatar); // JSON.parse
                hasSent = true;
+               alert('oneAvatar: ' + oneAvatar);
+               return(oneAvatar);
             }
          }, false);
       }

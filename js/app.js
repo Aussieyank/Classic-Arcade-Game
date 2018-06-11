@@ -1,13 +1,3 @@
-// let setupClasses  = document.getElementById( 'setup-game' ).classList,
-//       wonClasses  = document.getElementById( 'won-game' ).classList,
-//       lostClasses = document.getElementById( 'lost-game' ).classList,
-//
-//       setupButton = document.getElementById( 'button__setup-game' ),
-//        lostButton = document.getElementById( 'button__lost-game' ),
-//         wonButton = document.getElementById( 'button__won-game' )
-
-//modals = {setupGame: {}, wonModal: {}, lostModal: {}};
-
 
 // Enemies our player must avoid
 let Enemy = function () {
@@ -69,9 +59,40 @@ document.addEventListener('keyup', function (e) {
    player.handleInput(allowedKeys[e.keyCode]);
 });
 
-setupGame = new Modal('setup-game');
-setupGame.startModal();
-setupGame.show();
+const avatarModalIdConfig = {
+   this.modal         = document.getElementById(modalID);
+   this.avatarModalId = document.getElementById('avatar-modal-Id');
+   this.playButton    = document.getElementsByClassName('play-button')[0];
+   this.score         = this.modal.getElementsByClassName('score');
+
+
+};
+
+const currentGameConfig = {
+
+};
+
+const wonGameConfig = {
+
+};
+
+const lostGameConfig = {
+
+};
+
+
+
+const avatarModalId = new Modal('avatar-modal-Id');
+let oneAvatar           = avatarModalId.getAvatar();
+avatarModalId.show();
+
+// const oneGame  = new Modal('game');
+// let daAvatar   = oneGame.getAvatar();
+
+//oneGame.show();
+//alert('insideApp: ' + daAvatar);
+//document.getElementById( daAvatar ).innerHTML = daAvatar;
+
 
 
 

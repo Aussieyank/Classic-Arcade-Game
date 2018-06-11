@@ -4,15 +4,15 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-// let setupClasses  = document.getElementById( 'setup-game' ).classList,
+// let setupClasses  = document.getElementById( 'avatar-modal-Id' ).classList,
 //       wonClasses  = document.getElementById( 'won-game' ).classList,
 //       lostClasses = document.getElementById( 'lost-game' ).classList,
 //
-//       setupButton = document.getElementById( 'button__setup-game' ),
+//       setupButton = document.getElementById( 'button__avatar-modal-Id' ),
 //        lostButton = document.getElementById( 'button__lost-game' ),
 //         wonButton = document.getElementById( 'button__won-game' )
 
-//modals = {setupGame: {}, wonModal: {}, lostModal: {}};
+//modals = {avatarModalId: {}, wonModal: {}, lostModal: {}};
 
 
 // Enemies our player must avoid
