@@ -69,9 +69,14 @@ document.addEventListener('keyup', function (e) {
    player.handleInput(allowedKeys[e.keyCode]);
 });
 
-setupGame = new Modal('select-character');
-setupGame.startModal();
+const setupGame = new Modal('select-character');
+let selectedChar = setupGame.startModal();
 setupGame.show();
+
+
+//oneGame.show();
+alert('insideApp: ' + selectedChar);
+document.getElementById( 'selected-char' ).innerHTML = selectedChar;
 
 
 

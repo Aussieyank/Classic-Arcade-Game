@@ -3,7 +3,8 @@ class Modal {
    constructor(modalID) {
       this.setupGame = document.getElementById('select-character');
       this.modal = document.getElementById(modalID);
-      this.keepPlaying = this.modal.getElementsByClassName('play-button')[0];
+      this.keepPlaying  = this.modal.getElementsByClassName('play-button')[0];
+      this.selectedChar = document.getElementById('selected-char');
    }
 
    /**
@@ -40,21 +41,32 @@ class Modal {
 
       for (let k = 0; k < allAvatars.length; k++) {
          let hasSent = false;
+      }
+
+      for (let k = 0; k < allAvatars.length; k++) {
+         let hasSent = false;
 
          allAvatars[k].addEventListener('click', function (e) {
             event.preventDefault();
 
             theAvatar = allAvatars[k].getAttribute('data-avatar');
-
             getAvatar = document.getElementById(theAvatar).classList;
-            charBlock = document.getElementsByClassName('character__image')[0].classList;
-            getAvatar.add('active');
-            getAvatar.remove('hide');
-            getAvatar.add('zoomIn');
+
+            charBlock = document.getElementsByClassName('character__image');
+            charBlock[k].classList.remove('hide');
+            charBlock[k].classList.add('active');
+            charBlock[k].classList.add('animated');
+            charBlock[k].classList.add('bounceIn');
+
+            // getAvatarClassList.add('active');
+            // getAvatarClassList.remove('hide');
+            //alert('getAvatarClassList: ' + getAvatarClassList);
 
             if (false === hasSent) {
                console.log(theAvatar); // JSON.parse
+               alert('theAvatar: ' + theAvatar);
                hasSent = true;
+               return(theAvatar);
             }
          }, false);
       }

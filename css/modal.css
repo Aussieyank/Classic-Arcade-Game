@@ -107,7 +107,7 @@
 
 .character__container .character__image.active,
 .character__container .character__image.Hover {
-   border: 1px dotted #cc0000;
+   //border: 1px dotted #cc0000;
    /*background-color: #f2f2f2;*/
 }
 
