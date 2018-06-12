@@ -81,6 +81,10 @@ document.addEventListener('keyup', function (e) {
 
    player.handleInput(allowedKeys[e.keyCode]);
 });
+
+setupGame = new Modal('setup-game');
+setupGame.startModal();
+setupGame.show();
 'use strict';
 
 /** Engine.js

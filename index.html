@@ -17,12 +17,12 @@
 <!-- 'Pick Your Character' Modal -->
 <section id="setup-game" class="modal character__setup">
 
-   <header class="character__header">
-      <h1>Lady Bugger</h1>
-      <h2>Pick Your Character</h2>
-   </header>
-
    <div class="character__content active">
+
+      <header class="character__header">
+         <h1>Lady Bugger</h1>
+         <h2>Pick Your Character</h2>
+      </header>
 
       <ul class="character__container">
          <li class="character__image animated ">
@@ -46,6 +46,18 @@
       <button id="button__setup-game" class="button keep-playing animated zoomIn">Play</button>
    </footer>
 
+</section>
+
+<!-- Game Screen -->
+<section id="game" class="screen screen__game">
+   <header class="screen__header">
+      <h1>Lady Bugger</h1>
+      <p>Score: <span class="score block">0</span></p>
+   </header>
+
+   <div class="screen__content game-board-container">
+      <!-- game canvas goes in here -->
+   </div>
 </section>
 
 <!-- 'Game Over' Modal -->

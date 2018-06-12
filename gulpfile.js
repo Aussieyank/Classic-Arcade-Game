@@ -9,6 +9,7 @@ const notify = require('gulp-notify');
 const plumber = require('gulp-plumber');
 const rename = require('gulp-rename');
 const uglify = require('gulp-uglify');
+const browserSync = require('browser-sync').create();
 
 // Set assets paths.
 const paths = {
@@ -144,6 +145,16 @@ gulp.task('js:lint', () =>
  * https://www.npmjs.com/package/browser-sync
  */
 gulp.task('watch', function () {
+   var watchSettings = {
+      browserSync:	{
+         open: false,             // Open project in a new tab?
+         injectChanges: false,     // Auto inject changes instead of full reload
+         proxy: "http://lady.test:3000",  // Use http://domainname.tld:3000 to use BrowserSync
+         watchOptions: {
+            debounceDelay: 1000  // Wait 1 second before injecting
+         }
+      }
+   }
 
    // Run tasks when files change.
    gulp.watch(paths.css, ['styles']);
