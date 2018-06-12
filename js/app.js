@@ -56,6 +56,10 @@ class Player {
 let player = new Player();
 let allEnemies = [];
 
+const charValue = {
+   selectedChar: ''
+};
+
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function (e) {
@@ -70,13 +74,15 @@ document.addEventListener('keyup', function (e) {
 });
 
 const setupGame = new Modal('select-character');
-let selectedChar = setupGame.startModal();
+charValue.selectedChar = setupGame.startModal(charValue);
 setupGame.show();
 
 
 //oneGame.show();
-alert('insideApp: ' + selectedChar);
-document.getElementById( 'selected-char' ).innerHTML = selectedChar;
+alert('insideApp: ' + charValue.selectedChar);
+if (null != charValue.selectedChar) {
+   document.getElementById( charValue.selectedChar ).innerHTML = charValue.selectedChar;
+}
 
 
 

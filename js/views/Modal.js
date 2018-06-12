@@ -1,9 +1,9 @@
 class Modal {
 
    constructor(modalID) {
-      this.setupGame = document.getElementById('select-character');
-      this.modal = document.getElementById(modalID);
-      this.keepPlaying  = this.modal.getElementsByClassName('play-button')[0];
+      this.setupGame    = document.getElementById('select-character');
+      this.modal        = document.getElementById(modalID);
+      this.playButton   = this.modal.getElementsByClassName('play-button')[0];
       this.selectedChar = document.getElementById('selected-char');
    }
 
@@ -14,8 +14,8 @@ class Modal {
    show(keepScore = 0) {
       this.setupGame.classList.add('active');
       this.setupGame.classList.remove('none');
-      this.keepPlaying.classList.remove('none');
-      this.keepPlaying.classList.add('active');
+      this.playButton.classList.remove('none');
+      this.playButton.classList.add('active');
    }
 
    /**
@@ -23,8 +23,8 @@ class Modal {
     */
    hide() {
       this.modal.classList.remove('active');
-      this.keepPlaying.classList.remove('active');
-      this.keepPlaying.classList.add('none');
+      this.playButton.classList.remove('active');
+      this.playButton.classList.add('none');
    }
 
 
@@ -32,7 +32,7 @@ class Modal {
     * @description
     *
     */
-   startModal() {
+   startModal(charValue) {
       let theAvatar;
       let getAvatar;
       let charBlock;
@@ -60,13 +60,18 @@ class Modal {
 
             // getAvatarClassList.add('active');
             // getAvatarClassList.remove('hide');
-            //alert('getAvatarClassList: ' + getAvatarClassList);
+            // alert('getAvatarClassList: ' + getAvatarClassList);
 
             if (false === hasSent) {
                console.log(theAvatar); // JSON.parse
                alert('theAvatar: ' + theAvatar);
                hasSent = true;
-               return(theAvatar);
+               charValue.selectedChar = theAvatar;
+               if (null != charValue.selectedChar) {
+                  document.getElementById( charValue.selectedChar ).innerHTML = charValue.selectedChar;
+                  document.getElementById( 'selected-char' ).innerHTML = charValue.selectedChar;
+               }
+               return(charValue);
             }
          }, false);
       }
