@@ -15,38 +15,38 @@
 <body>
 
 <!-- 'Pick Your Character' Modal -->
-<section id="setup-game" class="modal character__setup">
-
-   <div class="character__content active">
+<section id="select-character" class="modal character__setup">
 
       <header class="character__header">
          <h1>Lady Bugger</h1>
          <h2>Pick Your Character</h2>
       </header>
 
+   <div class="character__content active">
+
       <ul class="character__container">
-         <li class="character__image animated ">
-            <img src="images/char-boy.png" id="char-boy" width="101" height="171" class="charImg animated zoomIn" data-avatar="char-boy" alt="Boy Character">
+         <li class="character__image ">
+            <img src="images/char-boy.png" id="char-boy" class="charImg" data-avatar="char-boy" alt="Boy Character">
          </li>
-         <li class="character__image animated ">
-            <img src="images/char-cat-girl.png" id="char-cat-girl" width="101" height="171" class="charImg animated" data-avatar="char-cat-girl" alt="Cat Girl Character">
+         <li class="character__image ">
+            <img src="images/char-cat-girl.png" id="char-cat-girl" class="charImg" data-avatar="char-cat-girl" alt="Cat Girl Character">
          </li>
-         <li class="character__image animated ">
-            <img src="images/char-horn-girl.png" id="char-horn-girl" width="101" height="171" class="charImg animated" data-avatar="char-horn-girl" alt="Horn Girl Character">
+         <li class="character__image ">
+            <img src="images/char-horn-girl.png" id="char-horn-girl" class="charImg" data-avatar="char-horn-girl" alt="Horn Girl Character">
          </li>
-         <li class="character__image animated ">
-            <img src="images/char-pink-girl.png" id="char-pink-girl" width="101" height="171" class="charImg animated" data-avatar="char-pink-girl" alt="Pink Girl Character">
+         <li class="character__image ">
+            <img src="images/char-pink-girl.png" id="char-pink-girl" class="charImg" data-avatar="char-pink-girl" alt="Pink Girl Character">
          </li>
-         <li class="character__image animated ">
-            <img src="images/char-princess-girl.png" id="char-princess-girl" width="101" height="171" class="charImg animated" data-avatar="char-princess-girl" alt="Princess Girl Character">
+         <li class="character__image ">
+            <img src="images/char-princess-girl.png" id="char-princess-girl" class="charImg" data-avatar="char-princess-girl" alt="Princess Girl Character">
          </li>
       </ul>
    </div>  <!-- .character__content -->
    <footer class="character__footer">
-      <button id="button__setup-game" class="button keep-playing animated zoomIn">Play</button>
+      <button id="button__select-character" class="button play-button">Play</button>
    </footer>
 
-</section>
+</section> <!-- 'Pick Your Character' Modal -->
 
 <!-- Game Screen -->
 <section id="game" class="screen screen__game">
@@ -58,7 +58,7 @@
    <div class="screen__content game-board-container">
       <!-- game canvas goes in here -->
    </div>
-</section>
+</section> <!-- Game Screen -->
 
 <!-- 'Game Over' Modal -->
 <section id="won-game" class="modal none modal__won-game">
@@ -68,10 +68,10 @@
       </div>
       <h2>Congratulations! You Won!</h2>
       <p id="wonHTML"></p>
-      <button id='button__won-game' class="button keep-playing animated zoomIn">Play again!
+      <button id='button__won-game' class="button play-button zoomIn">Play again!
       </button>
    </div>
-</section>
+</section> <!-- 'Game Over' Modal -->
 
 <!-- 'You lost' Modal -->
 <section id="lost-game" class="modal none modal__lost-game">
@@ -83,10 +83,10 @@
       <p id="lostHTML"></p>
       <p>Sorry, but the clock ran out before you could complete this round.</p>
       <p class="messageHTML"></p>
-      <button id='button__lost-game' class="button keep-playing">Play again!
+      <button id='button__lost-game' class="button play-button">Play again!
       </button>
    </div>
-</section>
+</section> <!-- 'You lost' Modal -->
 
 <script src="js/views/Modal.js"></script>
 <script src="js/canvas.js"></script>

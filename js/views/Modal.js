@@ -1,9 +1,9 @@
 class Modal {
 
    constructor(modalID) {
-      this.setupGame = document.getElementById('setup-game');
+      this.setupGame = document.getElementById('select-character');
       this.modal = document.getElementById(modalID);
-      this.keepPlaying = this.modal.getElementsByClassName('keep-playing')[0];
+      this.keepPlaying = this.modal.getElementsByClassName('play-button')[0];
    }
 
    /**

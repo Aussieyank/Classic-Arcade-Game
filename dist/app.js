@@ -4,11 +4,11 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-// let setupClasses  = document.getElementById( 'setup-game' ).classList,
+// let setupClasses  = document.getElementById( 'select-character' ).classList,
 //       wonClasses  = document.getElementById( 'won-game' ).classList,
 //       lostClasses = document.getElementById( 'lost-game' ).classList,
 //
-//       setupButton = document.getElementById( 'button__setup-game' ),
+//       setupButton = document.getElementById( 'button__select-character' ),
 //        lostButton = document.getElementById( 'button__lost-game' ),
 //         wonButton = document.getElementById( 'button__won-game' )
 
@@ -82,7 +82,7 @@ document.addEventListener('keyup', function (e) {
    player.handleInput(allowedKeys[e.keyCode]);
 });
 
-setupGame = new Modal('setup-game');
+setupGame = new Modal('select-character');
 setupGame.startModal();
 setupGame.show();
 'use strict';
