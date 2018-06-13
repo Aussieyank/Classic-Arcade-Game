@@ -1,14 +1,3 @@
-// let setupClasses  = document.getElementById( 'select-character' ).classList,
-//       wonClasses  = document.getElementById( 'won-game' ).classList,
-//       lostClasses = document.getElementById( 'lost-game' ).classList,
-//
-//       setupButton = document.getElementById( 'button__select-character' ),
-//        lostButton = document.getElementById( 'button__lost-game' ),
-//         wonButton = document.getElementById( 'button__won-game' )
-
-//modals = {setupGame: {}, wonModal: {}, lostModal: {}};
-
-
 // Enemies our player must avoid
 let Enemy = function () {
    // Variables applied to each of our instances go here,
@@ -56,9 +45,7 @@ class Player {
 let player = new Player();
 let allEnemies = [];
 
-const charValue = {
-   selectedChar: ''
-};
+
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
@@ -73,16 +60,17 @@ document.addEventListener('keyup', function (e) {
    player.handleInput(allowedKeys[e.keyCode]);
 });
 
+const charValue = {
+   selectedChar: ''
+};
+
 const setupGame = new Modal('select-character');
 charValue.selectedChar = setupGame.startModal(charValue);
 setupGame.show();
 
-
 //oneGame.show();
-alert('insideApp: ' + charValue.selectedChar);
 if (null != charValue.selectedChar) {
-   document.getElementById( charValue.selectedChar ).innerHTML = charValue.selectedChar;
+   document.getElementById( 'selected-char' ).innerHTML = charValue.selectedChar;
 }
-
 
 

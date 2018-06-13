@@ -4,17 +4,6 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-// let setupClasses  = document.getElementById( 'select-character' ).classList,
-//       wonClasses  = document.getElementById( 'won-game' ).classList,
-//       lostClasses = document.getElementById( 'lost-game' ).classList,
-//
-//       setupButton = document.getElementById( 'button__select-character' ),
-//        lostButton = document.getElementById( 'button__lost-game' ),
-//         wonButton = document.getElementById( 'button__won-game' )
-
-//modals = {setupGame: {}, wonModal: {}, lostModal: {}};
-
-
 // Enemies our player must avoid
 var Enemy = function Enemy() {
    // Variables applied to each of our instances go here,
@@ -69,10 +58,6 @@ var Player = function () {
 var player = new Player();
 var allEnemies = [];
 
-var charValue = {
-   selectedChar: ''
-};
-
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function (e) {
@@ -86,14 +71,17 @@ document.addEventListener('keyup', function (e) {
    player.handleInput(allowedKeys[e.keyCode]);
 });
 
+var charValue = {
+   selectedChar: ''
+};
+
 var setupGame = new Modal('select-character');
 charValue.selectedChar = setupGame.startModal(charValue);
 setupGame.show();
 
 //oneGame.show();
-alert('insideApp: ' + charValue.selectedChar);
 if (null != charValue.selectedChar) {
-   document.getElementById(charValue.selectedChar).innerHTML = charValue.selectedChar;
+   document.getElementById('selected-char').innerHTML = charValue.selectedChar;
 }
 'use strict';
 
@@ -125,9 +113,11 @@ var Engine = function () {
       ctx = canvas.getContext('2d');
   var lastTime = void 0;
 
-  canvas.width = 505;
-  canvas.height = 606;
-  doc.body.appendChild(canvas);
+  setTimeout(function () {
+    canvas.width = 505;
+    canvas.height = 606;
+    doc.body.appendChild(canvas);
+  }, 1500); // timeout
 
   /* This function serves as the kickoff point for the game loop itself
    * and handles properly calling the update and render methods.

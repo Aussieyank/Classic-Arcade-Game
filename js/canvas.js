@@ -30,29 +30,24 @@
    //});
 
 let setupClasses = document.getElementById('select-character').classList,
-   wonClasses    = document.getElementById('won-game').classList,
-   lostClasses   = document.getElementById('lost-game').classList,
+   wonClasses = document.getElementById('won-game').classList,
+   lostClasses = document.getElementById('lost-game').classList,
 
    setupButton = document.getElementById('button__select-character'),
-   lostButton  = document.getElementById('button__lost-game'),
-   wonButton   = document.getElementById('button__won-game');
+   lostButton = document.getElementById('button__lost-game'),
+   wonButton = document.getElementById('button__won-game');
 
 /**
  * @description Open modal and give stats when user wins
  */
 function closeSetupModal() {
    event.preventDefault();
-   setTimeout(function () {
+   //setTimeout(function () {
 
-      //setupClasses.remove( 'active' )
-      //setupClasses.add( 'none' )
-      setupClasses.add('bounceInDown');
-      setupGame.hide();
-      //setupGame.hideButton();
-      //alert('in setup button');
-      //console.log('in setupButton');
-      //location.reload();
-   }, 600);  // timeout
+   //setupClasses.add('bounceInDown');
+   setupGame.hide();
+
+   //}, 100);  // timeout
 }
 
 //let setupModal;

@@ -4,7 +4,7 @@ class Modal {
       this.setupGame    = document.getElementById('select-character');
       this.modal        = document.getElementById(modalID);
       this.playButton   = this.modal.getElementsByClassName('play-button')[0];
-      this.selectedChar = document.getElementById('selected-char');
+      this.charHdr      = document.getElementById('game');
    }
 
    /**
@@ -13,8 +13,8 @@ class Modal {
     */
    show(keepScore = 0) {
       this.setupGame.classList.add('active');
-      this.setupGame.classList.remove('none');
-      this.playButton.classList.remove('none');
+      this.setupGame.classList.remove('hide');
+      this.playButton.classList.remove('hide');
       this.playButton.classList.add('active');
    }
 
@@ -24,7 +24,8 @@ class Modal {
    hide() {
       this.modal.classList.remove('active');
       this.playButton.classList.remove('active');
-      this.playButton.classList.add('none');
+      this.playButton.classList.add('hide');
+      this.charHdr.classList.remove('hide');
    }
 
 
@@ -37,7 +38,9 @@ class Modal {
       let getAvatar;
       let charBlock;
 
+      this.show();
       const allAvatars = Array.from(document.querySelectorAll('.charImg'));
+      this.charHdr.classList.add('hide');
 
       for (let k = 0; k < allAvatars.length; k++) {
          let hasSent = false;
@@ -58,17 +61,10 @@ class Modal {
             charBlock[k].classList.add('animated');
             charBlock[k].classList.add('bounceIn');
 
-            // getAvatarClassList.add('active');
-            // getAvatarClassList.remove('hide');
-            // alert('getAvatarClassList: ' + getAvatarClassList);
-
             if (false === hasSent) {
-               console.log(theAvatar); // JSON.parse
-               alert('theAvatar: ' + theAvatar);
                hasSent = true;
                charValue.selectedChar = theAvatar;
                if (null != charValue.selectedChar) {
-                  document.getElementById( charValue.selectedChar ).innerHTML = charValue.selectedChar;
                   document.getElementById( 'selected-char' ).innerHTML = charValue.selectedChar;
                }
                return(charValue);
