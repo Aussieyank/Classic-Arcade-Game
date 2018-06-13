@@ -60,17 +60,17 @@ document.addEventListener('keyup', function (e) {
    player.handleInput(allowedKeys[e.keyCode]);
 });
 
-const charValue = {
+const charObj = {
    selectedChar: ''
 };
 
 const setupGame = new Modal('select-character');
-charValue.selectedChar = setupGame.startModal(charValue);
+charObj.selectedChar = setupGame.startModal(charObj);
 setupGame.show();
 
 //oneGame.show();
-if (null != charValue.selectedChar) {
-   document.getElementById( 'selected-char' ).innerHTML = charValue.selectedChar;
+if (null != charObj.selectedChar) {
+   document.getElementById( 'selected-char' ).innerHTML = charObj.selectedChar;
 }
 
 

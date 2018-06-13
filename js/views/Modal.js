@@ -28,32 +28,31 @@ class Modal {
       this.charHdr.classList.remove('hide');
    }
 
-
    /**
     * @description
     *
     */
-   startModal(charValue) {
-      let theAvatar;
-      let getAvatar;
+   startModal(charObj) {
+      let oneCharacter;
+      let charClassList;
       let charBlock;
 
       this.show();
-      const allAvatars = Array.from(document.querySelectorAll('.charImg'));
+      const allCharacters = Array.from(document.querySelectorAll('.charImg'));
       this.charHdr.classList.add('hide');
 
-      for (let k = 0; k < allAvatars.length; k++) {
+      for (let k = 0; k < allCharacters.length; k++) {
          let hasSent = false;
       }
 
-      for (let k = 0; k < allAvatars.length; k++) {
+      for (let k = 0; k < allCharacters.length; k++) {
          let hasSent = false;
 
-         allAvatars[k].addEventListener('click', function (e) {
+         allCharacters[k].addEventListener('click', function (e) {
             event.preventDefault();
 
-            theAvatar = allAvatars[k].getAttribute('data-avatar');
-            getAvatar = document.getElementById(theAvatar).classList;
+            oneCharacter = allCharacters[k].getAttribute('data-character');
+            charClassList = document.getElementById(oneCharacter).classList;
 
             charBlock = document.getElementsByClassName('character__image');
             charBlock[k].classList.remove('hide');
@@ -63,11 +62,11 @@ class Modal {
 
             if (false === hasSent) {
                hasSent = true;
-               charValue.selectedChar = theAvatar;
-               if (null != charValue.selectedChar) {
-                  document.getElementById( 'selected-char' ).innerHTML = charValue.selectedChar;
+               charObj.selectedChar = oneCharacter;
+               if (null != charObj.selectedChar) {
+                  document.getElementById('selected-char').innerHTML = charObj.selectedChar;
                }
-               return(charValue);
+               return(charObj);
             }
          }, false);
       }

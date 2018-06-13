@@ -71,17 +71,17 @@ document.addEventListener('keyup', function (e) {
    player.handleInput(allowedKeys[e.keyCode]);
 });
 
-var charValue = {
+var charObj = {
    selectedChar: ''
 };
 
 var setupGame = new Modal('select-character');
-charValue.selectedChar = setupGame.startModal(charValue);
+charObj.selectedChar = setupGame.startModal(charObj);
 setupGame.show();
 
 //oneGame.show();
-if (null != charValue.selectedChar) {
-   document.getElementById('selected-char').innerHTML = charValue.selectedChar;
+if (null != charObj.selectedChar) {
+   document.getElementById('selected-char').innerHTML = charObj.selectedChar;
 }
 'use strict';
 
