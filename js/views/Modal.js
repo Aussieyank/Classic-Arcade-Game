@@ -1,10 +1,13 @@
 class Modal {
-
+   /**
+    * @description
+    * @param modalID
+    */
    constructor(modalID) {
-      this.setupGame    = document.getElementById('select-character');
-      this.modal        = document.getElementById(modalID);
-      this.playButton   = this.modal.getElementsByClassName('play-button')[0];
-      this.charHdr      = document.getElementById('game');
+      this.setupCharacterSelect  = document.getElementById('select-character');
+      this.modal                 = document.getElementById(modalID);
+      this.playButton            = this.modal.getElementsByClassName('play-button')[0];
+      this.charHdr               = document.getElementById('game');
    }
 
    /**
@@ -12,8 +15,8 @@ class Modal {
     * @param keepScore
     */
    show(keepScore = 0) {
-      this.setupGame.classList.add('active');
-      this.setupGame.classList.remove('hide');
+      this.setupCharacterSelect.classList.add('active');
+      this.setupCharacterSelect.classList.remove('hide');
       this.playButton.classList.remove('hide');
       this.playButton.classList.add('active');
    }
@@ -30,40 +33,49 @@ class Modal {
 
    /**
     * @description
-    *
+    * @param charObj
     */
-   startModal(charObj) {
+   selectCharacterModal(charObj) {
       let oneCharacter;
       let charClassList;
       let charBlock;
 
       this.show();
       const allCharacters = Array.from(document.querySelectorAll('.charImg'));
+      // Hide game page header
       this.charHdr.classList.add('hide');
 
+      // start with a clean slate, no characters set
       for (let k = 0; k < allCharacters.length; k++) {
-         let hasSent = false;
+         charObj.isInitialized = false;
       }
 
+      // loop to find the first selected character
       for (let k = 0; k < allCharacters.length; k++) {
-         let hasSent = false;
+         charObj.isInitialized = false;
 
+         // loop through characters and find first clicked character
          allCharacters[k].addEventListener('click', function (e) {
             event.preventDefault();
 
+            // html data attribute is used to parse the name of the character
             oneCharacter = allCharacters[k].getAttribute('data-character');
             charClassList = document.getElementById(oneCharacter).classList;
 
+            // charBlock is a unordered list item, aka li
             charBlock = document.getElementsByClassName('character__image');
             charBlock[k].classList.remove('hide');
             charBlock[k].classList.add('active');
             charBlock[k].classList.add('animated');
             charBlock[k].classList.add('bounceIn');
 
-            if (false === hasSent) {
-               hasSent = true;
+            if (false === charObj.isInitialized) {
+               charObj.isInitialized = true;
                charObj.selectedChar = oneCharacter;
                if (null != charObj.selectedChar) {
+                  document.getElementById('selected-char').innerHTML = charObj.selectedChar;
+               } else { // set a default and update it later, remember async
+                  charObj.selectedChar = 'char-horn-girl';
                   document.getElementById('selected-char').innerHTML = charObj.selectedChar;
                }
                return(charObj);
