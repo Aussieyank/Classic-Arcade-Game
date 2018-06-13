@@ -95,34 +95,14 @@
    width: 105px;
    height: 175px;
    margin-bottom: 20px;
-}
-
-.character__image .charImg:hover {
-   //animation: 1s ease-in-out 1s;
-}
-
-.character__container .character__image:hover {
+}   //border: 1px dotted #cc0000;
    /*background-color: #f2f2f2;*/
-}
 
-.character__container .character__image.active,
-.character__container .character__image.Hover {
-   //border: 2px dotted #66BD55;
-   //transform:  rotateY(180deg);
-}
 
 /** Game Lost Modal **/
-
-.modal__lost-game {
-//   background-color: #cc0000;
-   color: #fff;
-}
 
 .modal__lost-game .loader {
    color: #fff;
 }
 
-.daAvatar {
-   display: flex;
-}
 

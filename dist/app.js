@@ -4,26 +4,25 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-// let setupClasses  = document.getElementById( 'setup-avatar-modal' ).classList,
-//       wonClasses  = document.getElementById( 'won-game' ).classList,
-//       lostClasses = document.getElementById( 'lost-game' ).classList,
-//
-//       setupButton = document.getElementById( 'button__setup-avatar-modal' ),
-//        lostButton = document.getElementById( 'button__lost-game' ),
-//         wonButton = document.getElementById( 'button__won-game' )
-
-//modals = {setupAvatarModal: {}, wonModal: {}, lostModal: {}};
-
-
 // Enemies our player must avoid
-var Enemy = function Enemy() {
+var Enemy = function Enemy(x, y) {
    // Variables applied to each of our instances go here,
    // we've provided one for you to get started
 
    // The image/sprite for our enemies, this uses
    // a helper we've provided to easily load images
    this.sprite = 'images/enemy-bug.png';
+   this.x = x;
+   this.y = y;
+   //this.speed = Math.random() * 5;
+   this.speed = getRandomInt(10);
 };
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+//
+function getRandomInt(max) {
+   return Math.floor(Math.random() * Math.floor(max));
+}
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
@@ -31,6 +30,27 @@ Enemy.prototype.update = function (dt) {
    // You should multiply any movement by the dt parameter
    // which will ensure the game runs at the same speed for
    // all computers.
+   if (this.x < 600) {
+      this.x += this.speed;
+   } else {
+      this.x = -100;
+   }
+
+   hasCollided();
+};
+
+Enemy.prototype.hasCollided = function () {
+   // Check for collision between player and enemies
+   if (player.x < this.x + 60 && player.x + 37 > this.x && player.y < this.y + 25 && 30 + player.y > this.y) {
+      player.x = 200;
+      player.y = 380;
+
+      // toggle background after collision between player and enemies
+      document.querySelector('body').style.backgroundColor = 'red';
+      setTimeout(function () {
+         document.querySelector('body').style.backgroundColor = 'white';
+      }, 200);
+   }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -44,30 +64,85 @@ Enemy.prototype.render = function () {
 
 var Player = function () {
    function Player() {
+      var x = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 100;
+      var y = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 100;
+      var src = arguments[2];
+
       _classCallCheck(this, Player);
+
+      this.x = x;
+      this.y = y;
+      this.sprite = new Image();
+      this.sprite.src = src;
    }
 
    _createClass(Player, [{
       key: 'update',
-      value: function update() {}
+      value: function update() {
+         this.sprite.src = 'images/' + charObj.selectedChar + '.png';
+         ctx.drawImage(this.sprite, this.x, this.y);
+      }
    }, {
       key: 'render',
-      value: function render() {}
+      value: function render() {
+         ctx.drawImage(this.sprite, this.x, this.y);
+      }
    }, {
       key: 'handleInput',
-      value: function handleInput() {}
+      value: function handleInput(keyCode) {
+         switch (keyCode) {
+            case 'up':
+               this.y -= this.y > 0 ? 85 : 0;
+               break;
+            case 'down':
+               this.y += this.y < 300 ? 85 : 0;
+               break;
+            case 'right':
+               this.x += this.x < 400 ? 100 : 0;
+               break;
+            default:
+               this.x -= this.x > 0 ? 100 : 0;
+         }
+      }
    }]);
 
    return Player;
 }();
 
+var charObj = {
+   selectedChar: '',
+   isInitialized: false
+};
+
+var setupCharacterSelect = new Modal('select-character');
+charObj.selectedChar = setupCharacterSelect.selectCharacterModal(charObj);
+setupCharacterSelect.show();
+
+if (false === charObj.isInitialized) {
+   charObj.selectedChar = 'char-horn-girl';
+   document.getElementById('selected-char').innerHTML = charObj.selectedChar;
+}
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called setup-avatar-modal
 // Place the player object in a variable called player
+var player = new Player(200, 295, 'images/' + charObj.selectedChar + '.png');
+var allEnemies = [];
 
+for (var k = 0; k < 3; k++) {
+   //                   x,   (     y     )
+   var bug = new Enemy(-100, 60 + 85 * k);
+   allEnemies.push(bug);
+}
 
-var player = new Player();
-var setup-avatar-modal = [];
+for (var _k = 1; _k < 3; _k++) {
+   //                   x,   (     y     )
+   var _bug = new Enemy(-100, 60 + 85 * _k);
+   allEnemies.push(_bug);
+   if (player.hasCollided()) {
+      alert('hasCollided');
+   };
+}
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
@@ -111,9 +186,11 @@ var Engine = function () {
       ctx = canvas.getContext('2d');
   var lastTime = void 0;
 
+  setTimeout(function () {
   canvas.width = 505;
   canvas.height = 606;
   doc.body.appendChild(canvas);
+  }, 1500); // timeout
 
   /* This function serves as the kickoff point for the game loop itself
    * and handles properly calling the update and render methods.

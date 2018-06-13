@@ -11,11 +11,12 @@
    <link rel="stylesheet" href="css/keyframes.css">
    <link rel="stylesheet" href="css/modal.css">
    <link rel="stylesheet" href="css/screen.css">
+
 </head>
 <body>
 
 <!-- 'Pick Your Character' Modal -->
-<section id="setup-avatar-modal" class="modal character__setup">
+<section id="select-character" class="preload modal character__setup">
 
    <header class="character__header">
       <h1>Lady Bugger</h1>
@@ -26,29 +27,29 @@
 
       <ul class="character__container">
          <li class="character__image ">
-            <img src="images/char-boy.png" id="char-boy" class="charImg" data-avatar="char-boy" alt="Boy Character">
+            <img src="images/char-boy.png" id="char-boy" class="charImg" data-character="char-boy" alt="Boy Character">
          </li>
          <li class="character__image ">
-            <img src="images/char-cat-girl.png" id="char-cat-girl" class="charImg" data-avatar="char-cat-girl" alt="Cat Girl Character">
+            <img src="images/char-cat-girl.png" id="char-cat-girl" class="charImg" data-character="char-cat-girl" alt="Cat Girl Character">
          </li>
          <li class="character__image ">
-            <img src="images/char-horn-girl.png" id="char-horn-girl" class="charImg" data-avatar="char-horn-girl" alt="Horn Girl Character">
+            <img src="images/char-horn-girl.png" id="char-horn-girl" class="charImg" data-character="char-horn-girl" alt="Horn Girl Character">
          </li>
          <li class="character__image ">
-            <img src="images/char-pink-girl.png" id="char-pink-girl" class="charImg" data-avatar="char-pink-girl" alt="Pink Girl Character">
+            <img src="images/char-pink-girl.png" id="char-pink-girl" class="charImg" data-character="char-pink-girl" alt="Pink Girl Character">
          </li>
          <li class="character__image ">
-            <img src="images/char-princess-girl.png" id="char-princess-girl" class="charImg" data-avatar="char-princess-girl" alt="Princess Girl Character">
+            <img src="images/char-princess-girl.png" id="char-princess-girl" class="charImg" data-character="char-princess-girl" alt="Princess Girl Character">
          </li>
       </ul>
 
    </div>  <!-- .character__content -->
 
    <footer class="character__footer">
-      <button id="button__setup-avatar-modal" class="button play-button">Play</button>
+      <button id="button__select-character" class="button play-button">Play</button>
    </footer>
 
-</section>
+</section> <!-- 'Pick Your Character' Modal -->
 
 <!-- Game Screen -->
 <section id="game" class="screen screen__game">
@@ -61,7 +62,7 @@
       <!-- game canvas goes in here -->
    </div>
 
-   <div>danny &nbsp;<span id="daAvatar"></span></div>
+   <div>danny &nbsp;<span id="selected-char"></span></div>
 </section> <!-- Game Screen -->
 
 <!-- 'Game Over' Modal -->
@@ -72,7 +73,7 @@
       </div>
       <h2>Congratulations! You Won!</h2>
       <p id="wonHTML"></p>
-      <button id='button__won-game' class="button play-button">Play again!
+      <button id='button__won-game' class="button play-button zoomIn">Play again!
       </button>
    </div>
 </section> <!-- 'Game Over' Modal -->

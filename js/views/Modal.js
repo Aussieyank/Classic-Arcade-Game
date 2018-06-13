@@ -1,10 +1,13 @@
 class Modal {
-
+   /**
+    * @description
+    * @param modalID
+    */
    constructor(modalID) {
-      this.modal2            = document.getElementById(modalID);
-      this.setupAvatarModal = document.getElementById('setup-avatar-modal');
-      this.playButton       = document.getElementsByClassName('play-button')[0];
-      this.score            = this.modal2.getElementsByClassName('score');
+      this.setupCharacterSelect  = document.getElementById('select-character');
+      this.modal                 = document.getElementById(modalID);
+      this.playButton            = this.modal.getElementsByClassName('play-button')[0];
+      this.charHdr               = document.getElementById('game');
    }
 
    /**
@@ -12,8 +15,9 @@ class Modal {
     * @param keepScore
     */
    show(keepScore = 0) {
-      this.setupAvatarModal.classList.add('active');
-      this.setupAvatarModal.classList.remove('none');
+      this.setupCharacterSelect.classList.add('active');
+      this.setupCharacterSelect.classList.remove('hide');
+      this.playButton.classList.remove('hide');
       this.playButton.classList.add('active');
       this.playButton.classList.remove('none');
    }
@@ -24,49 +28,58 @@ class Modal {
    hide() {
       this.modal.classList.remove('active');
       this.playButton.classList.remove('active');
-      this.playButton.classList.add('none');
+      this.playButton.classList.add('hide');
+      this.charHdr.classList.remove('hide');
    }
 
    /**
     * @description
-    *
+    * @param charObj
     */
-   getAvatar() {
-      let oneAvatar;
-      let getAvatarClassList;
+   selectCharacterModal(charObj) {
+      let oneCharacter;
+      let charClassList;
+      let charBlock;
 
-      const allAvatars = Array.from(document.querySelectorAll('.charImg'));
-      const charBlock  = document.getElementsByClassName('character__image');
+      this.show();
+      const allCharacters = Array.from(document.querySelectorAll('.charImg'));
+      // Hide game page header
+      this.charHdr.classList.add('hide');
 
-      for (let k = 0; k < allAvatars.length; k++) {
-         charBlock[k].classList.remove('active');
+      // start with a clean slate, no characters set
+      for (let k = 0; k < allCharacters.length; k++) {
+         charObj.isInitialized = false;
       }
 
-      for (let k = 0; k < allAvatars.length; k++) {
-         let hasSent = false;
+      // loop to find the first selected character
+      for (let k = 0; k < allCharacters.length; k++) {
+         charObj.isInitialized = false;
 
-         allAvatars[k].addEventListener('click', function (e) {
+         // loop through characters and find first clicked character
+         allCharacters[k].addEventListener('click', function (e) {
             event.preventDefault();
 
-            oneAvatar = allAvatars[k].getAttribute('data-avatar');
-            getAvatarClassList = document.getElementById(oneAvatar).classList;
+            // html data attribute is used to parse the name of the character
+            oneCharacter = allCharacters[k].getAttribute('data-character');
+            charClassList = document.getElementById(oneCharacter).classList;
 
-            const charBlock = document.getElementsByClassName('character__image');
+            // charBlock is a unordered list item, aka li
+            charBlock = document.getElementsByClassName('character__image');
             charBlock[k].classList.remove('hide');
             charBlock[k].classList.add('active');
             charBlock[k].classList.add('animated');
-            charBlock[k].classList.add('rubberBand');
+            charBlock[k].classList.add('bounceIn');
+            if (false === charObj.isInitialized) {
 
-            getAvatarClassList.add('active');
-            getAvatarClassList.remove('hide');
-            //alert('getAvatarClassList: ' + getAvatarClassList);
-
-
-            if (false === hasSent) {
-               console.log(oneAvatar); // JSON.parse
-               hasSent = true;
-               alert('oneAvatar: ' + oneAvatar);
-               return(oneAvatar);
+               charObj.isInitialized = true;
+               charObj.selectedChar = oneCharacter;
+               if (null != charObj.selectedChar) {
+                  document.getElementById('selected-char').innerHTML = charObj.selectedChar;
+               } else { // set a default and update it later, remember async
+                  charObj.selectedChar = 'char-horn-girl';
+                  document.getElementById('selected-char').innerHTML = charObj.selectedChar;
+               }
+               return(charObj);
             }
          }, false);
       }

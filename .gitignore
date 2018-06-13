@@ -6,3 +6,4 @@ course-resources/
 .htmlhintrc
 .stylelintrc
 .eslintrc.json
+.DS_Store

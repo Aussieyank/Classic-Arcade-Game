@@ -1,13 +1,23 @@
-
 // Enemies our player must avoid
-let Enemy = function () {
+let Enemy = function (x, y) {
    // Variables applied to each of our instances go here,
    // we've provided one for you to get started
 
    // The image/sprite for our enemies, this uses
    // a helper we've provided to easily load images
    this.sprite = 'images/enemy-bug.png';
+   this.x = x;
+   this.y = y;
+   //this.speed = Math.random() * 5;
+   this.speed = getRandomInt(10);
 };
+
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+//
+function getRandomInt(max) {
+   return Math.floor(Math.random() * Math.floor(max));
+}
+
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
@@ -15,7 +25,31 @@ Enemy.prototype.update = function (dt) {
    // You should multiply any movement by the dt parameter
    // which will ensure the game runs at the same speed for
    // all computers.
+   if (this.x < 600) {
+      this.x += this.speed;
+   } else {
+      this.x = -100;
+   }
+
+   hasCollided();
 };
+
+Enemy.prototype.hasCollided = function() {
+   // Check for collision between player and enemies
+   if (player.x < this.x + 60 &&
+      player.x + 37 > this.x &&
+      player.y < this.y + 25 &&
+      30 + player.y > this.y) {
+      player.x = 200;
+      player.y = 380;
+
+      // toggle background after collision between player and enemies
+      document.querySelector('body').style.backgroundColor = 'red';
+      setTimeout(function () {
+         document.querySelector('body').style.backgroundColor = 'white';
+      }, 200);
+   }
+}
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function () {
@@ -27,24 +61,75 @@ Enemy.prototype.render = function () {
 // a handleInput() method.
 class Player {
 
-   update() {
+   constructor(x = 100, y = 100, src) {
+      this.x = x;
+      this.y = y;
+      this.sprite = new Image();
+      this.sprite.src = src;
+   }
 
+   update() {
+      this.sprite.src = 'images/' + charObj.selectedChar + '.png';
+      ctx.drawImage(this.sprite, this.x, this.y);
    }
 
    render() {
-
+      ctx.drawImage(this.sprite, this.x, this.y);
    }
 
-   handleInput() {
-
+   handleInput(keyCode) {
+      switch (keyCode) {
+         case 'up':
+            this.y -= (this.y > 0) ? 85 : 0;
+            break;
+         case 'down':
+            this.y += (this.y < 300) ? 85 : 0;
+            break;
+         case 'right':
+            this.x += (this.x < 400) ? 100 : 0;
+            break;
+         default:
+            this.x -= (this.x > 0) ? 100 : 0;
+      }
    }
+   }
+
+const charObj = {
+   selectedChar: '',
+   isInitialized: false
+};
+
+const setupCharacterSelect = new Modal('select-character');
+charObj.selectedChar = setupCharacterSelect.selectCharacterModal(charObj);
+setupCharacterSelect.show();
+
+
+if (false === charObj.isInitialized) {
+   charObj.selectedChar = 'char-horn-girl';
+   document.getElementById('selected-char').innerHTML = charObj.selectedChar;
 }
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-let player = new Player();
+let player = new Player(200, 295, 'images/' + charObj.selectedChar + '.png');
 let allEnemies = [];
+
+for (let k = 0; k < 3; k++) {
+   //                   x,   (     y     )
+   let bug = new Enemy(-100, 60 + (85 * k));
+   allEnemies.push(bug);
+}
+
+for (let k = 1; k < 3; k++) {
+   //                   x,   (     y     )
+   let bug = new Enemy(-100, 60 + (85 * k));
+   allEnemies.push(bug);
+   if (player.hasCollided()) {
+      alert('hasCollided');
+   };
+}
+
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
@@ -58,40 +143,6 @@ document.addEventListener('keyup', function (e) {
 
    player.handleInput(allowedKeys[e.keyCode]);
 });
-
-const setupAvatarModalConfig = {
-   this.modal         = document.getElementById(modalID);
-   this.setupAvatarModal = document.getElementById('setup-avatar-modal');
-   this.playButton    = document.getElementsByClassName('play-button')[0];
-   this.score         = this.modal.getElementsByClassName('score');
-
-
-};
-
-const currentGameConfig = {
-
-};
-
-const wonGameConfig = {
-
-};
-
-const lostGameConfig = {
-
-};
-
-
-
-const setupAvatarModal = new Modal('setup-avatar-modal');
-let oneAvatar           = setupAvatarModal.getAvatar();
-setupAvatarModal.show();
-
-// const oneGame  = new Modal('game');
-// let daAvatar   = oneGame.getAvatar();
-
-//oneGame.show();
-//alert('insideApp: ' + daAvatar);
-//document.getElementById( daAvatar ).innerHTML = daAvatar;
 
 
 
