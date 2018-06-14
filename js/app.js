@@ -31,25 +31,32 @@ Enemy.prototype.update = function (dt) {
       this.x = -100;
    }
 
-   hasCollided();
-};
+   // add an event listener for a collision
+   let collision.addEventListener('collided', function(e) { process(e.detail) });
 
-Enemy.prototype.hasCollided = function() {
-   // Check for collision between player and enemies
+   // create and dispatch the event
+   var event = new CustomEvent('collided', {
+      WHAT GOES HERE?
+   });
+   obj.dispatchEvent(event);
+
+
+   // has collided code here
    if (player.x < this.x + 60 &&
-      player.x + 37 > this.x &&
-      player.y < this.y + 25 &&
+      player.x + 37 > this.x  &&
+      player.y < this.y + 25  &&
       30 + player.y > this.y) {
       player.x = 200;
       player.y = 380;
 
-      // toggle background after collision between player and enemies
-      document.querySelector('body').style.backgroundColor = 'red';
-      setTimeout(function () {
-         document.querySelector('body').style.backgroundColor = 'white';
-      }, 200);
+      // // toggle background after collision between player and enemies
+      // document.querySelector('body').style.backgroundColor = 'red';
+      // setTimeout(function () {
+      //    document.querySelector('body').style.backgroundColor = 'white';
+      // }, 200);
    }
-}
+};
+
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function () {
@@ -71,6 +78,7 @@ class Player {
    update() {
       this.sprite.src = 'images/' + charObj.selectedChar + '.png';
       ctx.drawImage(this.sprite, this.x, this.y);
+
    }
 
    render() {
@@ -93,6 +101,7 @@ class Player {
       }
    }
 }
+
 
 const charObj = {
    selectedChar: '',
@@ -125,13 +134,9 @@ for (let k = 1; k < 3; k++) {
    //                   x,   (     y     )
    let bug = new Enemy(-100, 60 + (85 * k));
    allEnemies.push(bug);
-   if (player.hasCollided()) {
-      alert('hasCollided');
-   };
 }
 
-
-   // This listens for key presses and sends the keys to your
+// This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function (e) {
    let allowedKeys = {
