@@ -57,7 +57,8 @@ class Modal {
 
          // loop through characters and find first clicked character
          allCharacters[k].addEventListener('click', function (e) {
-            event.preventDefault();
+            //event.preventDefault();
+            //event.stopPropagation();
 
             // html data attribute is used to parse the name of the character
             oneCharacter = allCharacters[k].getAttribute('data-character');

@@ -22,6 +22,7 @@ function getRandomInt(max) {
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function (dt) {
+   this.spritePlayer = document.getElementById(charObj.selectedChar);
    // You should multiply any movement by the dt parameter
    // which will ensure the game runs at the same speed for
    // all computers.
@@ -31,31 +32,17 @@ Enemy.prototype.update = function (dt) {
       this.x = -100;
    }
 
-   // add an event listener for a collision
-   let collision.addEventListener('collided', function(e) { process(e.detail) });
-
-   // create and dispatch the event
-   var event = new CustomEvent('collided', {
-      WHAT GOES HERE?
-   });
-   obj.dispatchEvent(event);
-
-
    // has collided code here
    if (player.x < this.x + 60 &&
-      player.x + 37 > this.x  &&
-      player.y < this.y + 25  &&
+      player.x + 37 > this.x &&
+      player.y < this.y + 25 &&
       30 + player.y > this.y) {
       player.x = 200;
       player.y = 380;
 
-      // // toggle background after collision between player and enemies
-      // document.querySelector('body').style.backgroundColor = 'red';
-      // setTimeout(function () {
-      //    document.querySelector('body').style.backgroundColor = 'white';
-      // }, 200);
-};
-   }
+
+   };
+}
 
 
 // Draw the enemy on the screen, required method for game
@@ -78,7 +65,6 @@ class Player {
    update() {
       this.sprite.src = 'images/' + charObj.selectedChar + '.png';
       ctx.drawImage(this.sprite, this.x, this.y);
-
    }
 
    render() {
@@ -100,8 +86,7 @@ class Player {
             this.x -= (this.x > 0) ? 100 : 0;
       }
    }
-   }
-
+}
 
 const charObj = {
    selectedChar: '',
@@ -148,7 +133,3 @@ document.addEventListener('keyup', function (e) {
 
    player.handleInput(allowedKeys[e.keyCode]);
 });
-
-
-
-

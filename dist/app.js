@@ -27,6 +27,7 @@ function getRandomInt(max) {
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function (dt) {
+   this.spritePlayer = document.getElementById(charObj.selectedChar);
    // You should multiply any movement by the dt parameter
    // which will ensure the game runs at the same speed for
    // all computers.
@@ -36,20 +37,12 @@ Enemy.prototype.update = function (dt) {
       this.x = -100;
    }
 
-   hasCollided();
-};
-
-Enemy.prototype.hasCollided = function () {
-   // Check for collision between player and enemies
+   // has collided code here
    if (player.x < this.x + 60 && player.x + 37 > this.x && player.y < this.y + 25 && 30 + player.y > this.y) {
       player.x = 200;
       player.y = 380;
 
-      // toggle background after collision between player and enemies
-      document.querySelector('body').style.backgroundColor = 'red';
-      setTimeout(function () {
-         document.querySelector('body').style.backgroundColor = 'white';
-      }, 200);
+      this.spritePlayer.classList.add('playerBounce');
    }
 };
 
@@ -139,9 +132,6 @@ for (var _k = 1; _k < 3; _k++) {
    //                   x,   (     y     )
    var _bug = new Enemy(-100, 60 + 85 * _k);
    allEnemies.push(_bug);
-   if (player.hasCollided()) {
-      alert('hasCollided');
-   };
 }
 
 // This listens for key presses and sends the keys to your

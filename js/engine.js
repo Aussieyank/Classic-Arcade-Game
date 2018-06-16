@@ -93,10 +93,10 @@ const Engine = (function (global = this) {
     * render methods.
     */
    function updateEntities(dt) {
-      let allEnemies.forEach(function (enemy) {
+      allEnemies.forEach(function (enemy) {
          enemy.update(dt);
       });
-      let player.update();
+      player.update();
    }
 
    /* This function initially draws the "game level", it will then call

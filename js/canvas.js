@@ -10,7 +10,9 @@ let setupClasses = document.getElementById('select-character').classList,
  * @description Open modal and give stats when user wins
  */
 function closeSetupModal() {
-   event.preventDefault();
+   //debugger
+   //event.stopPropagation();
+   //event.preventDefault();
 
    setupCharacterSelect.hide();
 }

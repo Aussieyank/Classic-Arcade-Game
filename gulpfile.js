@@ -9,7 +9,7 @@ const notify = require('gulp-notify');
 const plumber = require('gulp-plumber');
 const rename = require('gulp-rename');
 const uglify = require('gulp-uglify');
-const browserSync = require('browser-sync').create();
+//const browserSync = require('browser-sync').create();
 
 // Set assets paths.
 const paths = {
