@@ -1,0 +1,16 @@
+.playerBounce {
+   animation: bounce 4s cubic-bezier(.1,.25,1,.25) forwards;
+}
+
+/**
+ * Bouncing animation
+ */
+
+@keyframes bounce {
+   60%, 80%, to {
+      transform: translateY(400px);
+      animation-timing-function: ease;
+   }
+   70% { transform: translateY(300px); }
+   90% { transform: translateY(360px); }
+}

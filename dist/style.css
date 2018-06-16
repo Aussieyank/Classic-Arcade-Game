@@ -1,6 +1,6 @@
 body {
    text-align: center;
-   background-image: url("../images/sandpaper.png");
+   background-image: url("../images/sandpaper-red.png");
 }
 
 h1, h2 {
@@ -30,6 +30,22 @@ h2 {
    display: none;
 }
 
+.playerBounce {
+   animation: bounce 4s cubic-bezier(.1,.25,1,.25) forwards;
+}
+
+/**
+ * Bouncing animation
+ */
+
+@keyframes bounce {
+   60%, 80%, to {
+      transform: translateY(400px);
+      animation-timing-function: ease;
+   }
+   70% { transform: translateY(300px); }
+   90% { transform: translateY(360px); }
+}
 
 /*
  * Modals
@@ -39,7 +55,7 @@ h2 {
    z-index: 50;
 
    text-align: center;
-   background-image: url("../images/sandpaper.png");
+   background-image: url("../images/sandpaper-red.png");
 
    width: 100%;
    height: 100%;
@@ -155,6 +171,9 @@ h2 {
    color: #fff;
 }
 
+.tigger {
+   animation:  1s rubberBand;
+}
 
 @charset "UTF-8";
 
