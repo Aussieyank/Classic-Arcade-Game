@@ -75,10 +75,10 @@ class Modal {
                charObj.isInitialized = true;
                charObj.selectedChar = oneCharacter;
                if (null != charObj.selectedChar) {
-                  document.getElementById('selected-char').innerHTML = charObj.selectedChar;
+                  // document.getElementById('selected-char').innerHTML = charObj.selectedChar;
                } else { // set a default and update it later, remember async
                   charObj.selectedChar = 'char-horn-girl';
-                  document.getElementById('selected-char').innerHTML = charObj.selectedChar;
+                  // document.getElementById('selected-char').innerHTML = charObj.selectedChar;
                }
                return(charObj);
             }

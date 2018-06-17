@@ -39,8 +39,6 @@ Enemy.prototype.update = function (dt) {
       30 + player.y > this.y) {
       player.x = 200;
       player.y = 380;
-
-
    };
 }
 
@@ -100,7 +98,7 @@ setupCharacterSelect.show();
 
 if (false === charObj.isInitialized) {
    charObj.selectedChar = 'char-horn-girl';
-   document.getElementById('selected-char').innerHTML = charObj.selectedChar;
+   // document.getElementById('selected-char').innerHTML = charObj.selectedChar;
 }
 
 // Now instantiate your objects.

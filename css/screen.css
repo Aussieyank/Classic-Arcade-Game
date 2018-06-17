@@ -8,6 +8,10 @@
    margin-top: 40px;
 }
 
+.screen__header  p {
+   margin-top: 75px;
+}
+
 .screen .game-control {
    cursor: pointer;
 }
