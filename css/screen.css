@@ -1,3 +1,42 @@
+.screen {
+   max-width: 505px;
+   margin: 0 auto;
+   padding: 0;
+}
+
+.screen__header {
+   margin-top: 40px;
+}
+
+.screen .game-control {
+   cursor: pointer;
+}
+
+.hide {
+   display: none;
+}
+
+/*
+ * Game Screen
+ *-------------------------------------*/
+
+.screen__game h1,
+.screen__game p {
+   display: inline-block;
+   float: left;
+   margin-bottom: 0;
+}
+
+.screen__game p {
+   float: right;
+}
+
+.screen__game canvas {
+   display: block;
+   margin: 0 auto;
+   padding: 0;
+}
+
 .playerBounce {
    animation: bounce 4s cubic-bezier(.1,.25,1,.25) forwards;
 }
