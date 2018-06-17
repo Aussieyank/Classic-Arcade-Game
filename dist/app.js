@@ -41,9 +41,7 @@ Enemy.prototype.update = function (dt) {
    if (player.x < this.x + 60 && player.x + 37 > this.x && player.y < this.y + 25 && 30 + player.y > this.y) {
       player.x = 200;
       player.y = 380;
-
-      this.spritePlayer.classList.add('playerBounce');
-   }
+   };
 };
 
 // Draw the enemy on the screen, required method for game
@@ -117,9 +115,9 @@ if (false === charObj.isInitialized) {
 }
 
 // Now instantiate your objects.
-// Place all enemy objects in an array called setup-avatar-modal
+// Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-var player = new Player(200, 295, 'images/' + charObj.selectedChar + '.png');
+var player = new Player(200, 305, 'images/' + charObj.selectedChar + '.png');
 var allEnemies = [];
 
 for (var k = 0; k < 3; k++) {
@@ -177,9 +175,9 @@ var Engine = function () {
   var lastTime = void 0;
 
   setTimeout(function () {
-  canvas.width = 505;
-  canvas.height = 606;
-  doc.body.appendChild(canvas);
+    canvas.width = 505;
+    canvas.height = 606;
+    doc.body.appendChild(canvas);
   }, 1500); // timeout
 
   /* This function serves as the kickoff point for the game loop itself
@@ -214,7 +212,7 @@ var Engine = function () {
 
   /* This function does some initial setup that should only occur once,
    * particularly setting the lastTime variable that is required for the
-   * game loop.
+   * game loop
    */
   function init() {
     reset();
