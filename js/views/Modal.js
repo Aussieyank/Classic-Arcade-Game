@@ -8,6 +8,9 @@ class Modal {
       this.modal                 = document.getElementById(modalID);
       this.playButton            = this.modal.getElementsByClassName('play-button')[0];
       this.charHdr               = document.getElementById('game');
+
+      //this.score                 = 0;
+      console.log( 'modalID: ' +modalID);
    }
 
    /**
@@ -20,7 +23,16 @@ class Modal {
       this.playButton.classList.remove('hide');
       this.playButton.classList.add('active');
       this.playButton.classList.remove('none');
+
+      if (keepScore.length > 0) {
+         document.getElementById('score').innerHTML = keepScore;
+      }
+      this.modal.classList.add('active');
    }
+
+   // addScore(points = 0) {
+   //    this.score += points;
+   // }
 
    /**
     * @description Hide the modal

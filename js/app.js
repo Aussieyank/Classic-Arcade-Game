@@ -1,3 +1,13 @@
+let wonHTML = document.getElementById( 'wonHTML' ),
+   lostHTML = document.getElementById( 'lostHTML' ),
+
+   wonClasses = document.getElementById( 'won-game' ).classList,
+   lostClasses = document.getElementById( 'lost-game' ).classList,
+
+   lostButton = document.getElementById( 'button__lost-game' ),
+   wonButton = document.getElementById( 'button__won-game' );
+
+
 // Enemies our player must avoid
 let Enemy = function (x, y) {
    // Variables applied to each of our instances go here,
@@ -10,6 +20,8 @@ let Enemy = function (x, y) {
    this.y = y;
    //this.speed = Math.random() * 5;
    this.speed = getRandomInt(10);
+   this.scoreID = document.getElementById('score');
+   this.score = 0;
 };
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
@@ -39,14 +51,42 @@ Enemy.prototype.update = function (dt) {
       30 + player.y > this.y) {
       player.x = 200;
       player.y = 380;
-   };
-}
+      //this.score.innerText = 0;
+   } else {
+      if (player.y < 0) {
+         this.addScore(10000);
+         // console.log(numberWithCommas(this.getScore()));
+         // console.log(JSON.stringify(this.getScore(), null, 4));
+         this.scoreID.innerHTML = numberWithCommas(this.getScore());
+         // console.log(JSON.stringify(this.score.innerHTML, null, 4));
+         player.x = 200;
+         player.y = 380;
+      }
+   }
+};
+
+
+Enemy.prototype.addScore = function (points = 0) {
+   this.score += points;
+};
+
+Enemy.prototype.getScore = function () {
+   return this.score;
+};
+
+//https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
+const numberWithCommas = (x) => {
+   let parts = x.toString().split('.');
+   parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+   return parts.join('.');
+};
 
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function () {
    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
+
 
 // Now write your own player class
 // This class requires an update(), render() and
@@ -86,11 +126,20 @@ class Player {
    }
 }
 
+/**
+ * @description object with character data to determine which player
+ * @type {{selectedChar: string, isInitialized: boolean}}
+ */
 const charObj = {
    selectedChar: '',
    isInitialized: false
 };
 
+
+/**
+ * >>>>>>>>>>>>>>>>>>>>>>>>>>>>> Start game here <<<<<<<<<<<<<<<<<<<<<<<<<
+ *
+ */
 const setupCharacterSelect = new Modal('select-character');
 charObj.selectedChar = setupCharacterSelect.selectCharacterModal(charObj);
 setupCharacterSelect.show();
