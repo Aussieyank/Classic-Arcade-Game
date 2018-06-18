@@ -1,6 +1,10 @@
-
-// Enemies our player must avoid
-let Enemy = function (x, y) {
+/**
+ * @description Enemy prototype class
+ * @param x
+ * @param y
+ * @constructor
+ */
+let Enemy = function (x, y) {  // Enemies our player must avoid
    // Variables applied to each of our instances go here,
    // we've provided one for you to get started
 
@@ -15,13 +19,21 @@ let Enemy = function (x, y) {
    this.score = 0;
 };
 
+/**
+ * @description Used to randomize games, makes for some hard ones.
+ * @param max
+ * @returns {number}
+ */
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
-//
 function getRandomInt(max) {
    return Math.floor(Math.random() * Math.floor(max));
 }
 
-
+/**
+ * @description Update method,
+ *             but also used as switch to send to one and lost modals.
+ * @param dt
+ */
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function (dt) {
@@ -42,29 +54,52 @@ Enemy.prototype.update = function (dt) {
       30 + player.y > this.y) {
       player.x = 200;
       player.y = 380;
-      //this.score.innerText = 0;
+      this.zeroScore();
+      lostClasses.remove( 'none' );
+      lostClasses.add( 'active' );
    } else {
       if (player.y < 0) {
          this.addScore(10000);
-         // console.log(numberWithCommas(this.getScore()));
-         // console.log(JSON.stringify(this.getScore(), null, 4));
          this.scoreID.innerHTML = numberWithCommas(this.getScore());
          // console.log(JSON.stringify(this.score.innerHTML, null, 4));
          player.x = 200;
          player.y = 380;
+         wonClasses.remove( 'none' );
+         wonClasses.add( 'active' );
       }
    }
 };
 
-
+/**
+ * @description linear addition to score
+ * @param points
+ */
 Enemy.prototype.addScore = function (points = 0) {
    this.score += points;
+   this.scoreID.innerHTML = this.getScore();
 };
 
+/**
+ * @description get the score
+ * @returns {number|*}
+ */
 Enemy.prototype.getScore = function () {
    return this.score;
 };
 
+/**
+ * zero out score
+ */
+Enemy.prototype.zeroScore = function () {
+   this.score = 0;
+   this.scoreID.innerHTML = this.getScore();
+};
+
+/**
+ * @ used to comma delimit score
+ * @param x
+ * @returns {string}
+ */
 //https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript
 const numberWithCommas = (x) => {
    let parts = x.toString().split('.');
@@ -72,16 +107,16 @@ const numberWithCommas = (x) => {
    return parts.join('.');
 };
 
-
-// Draw the enemy on the screen, required method for game
+/**
+ * @description  Draw the enemy on the screen, required method for game
+ */
 Enemy.prototype.render = function () {
    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-
-// Now write your own player class
-// This class requires an update(), render() and
-// a handleInput() method.
+/**
+ * @description Player class
+ */
 class Player {
 
    constructor(x = 100, y = 100, src) {
@@ -91,16 +126,26 @@ class Player {
       this.sprite.src = src;
    }
 
+   /**
+    * @description update character
+    */
    update() {
       this.sprite.src = 'images/' + charObj.selectedChar + '.png';
       ctx.drawImage(this.sprite, this.x, this.y);
    }
 
+   /**
+    * @description repaint the screen
+    */
    render() {
       ctx.drawImage(this.sprite, this.x, this.y);
    }
 
-   handleInput(keyCode) {
+   /**
+    * @description handle the coordinates
+    * @param keyCode
+    */
+   parseInput(keyCode) {
       switch (keyCode) {
          case 'up':
             this.y -= (this.y > 0) ? 85 : 0;
@@ -147,12 +192,18 @@ if (false === charObj.isInitialized) {
 let player = new Player(200, 305, 'images/' + charObj.selectedChar + '.png');
 let allEnemies = [];
 
+/**
+ * Start with one on each row
+ */
 for (let k = 0; k < 3; k++) {
    //                   x,   (     y     )
    let bug = new Enemy(-100, 60 + (85 * k));
    allEnemies.push(bug);
 }
 
+/**
+ * add one more on each of the bottom rows
+ */
 for (let k = 1; k < 3; k++) {
    //                   x,   (     y     )
    let bug = new Enemy(-100, 60 + (85 * k));
@@ -160,7 +211,7 @@ for (let k = 1; k < 3; k++) {
 }
 
 // This listens for key presses and sends the keys to your
-// Player.handleInput() method. You don't need to modify this.
+// Player.parseInput() method. You don't need to modify this.
 document.addEventListener('keyup', function (e) {
    let allowedKeys = {
       37: 'left',
@@ -169,5 +220,5 @@ document.addEventListener('keyup', function (e) {
       40: 'down'
    };
 
-   player.handleInput(allowedKeys[e.keyCode]);
+   player.parseInput(allowedKeys[e.keyCode]);
 });

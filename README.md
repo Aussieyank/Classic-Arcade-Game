@@ -1,6 +1,29 @@
-frontend-nanodegree-arcade-game
-===============================
+# Project: Arcade Game
+## Front-End Web Developer Nanodegree Program
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+This game challenges you to work against the clock enemy and get to the other side..
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+You can play the game in your browser by [clicking here](https://danny-g-smith.github.io/Classic-Arcade-Game/).
+
+## How to Play
+
+[Click here](https://danny-g-smith.github.io/Classic-Arcade-Game/) to load the game into your browser.
+
+The trick to this game it to remember to be patient and wait for an opening.
+
+Here is what you do:
+
+- Use the arror keys to move up and down, left and right.  High score will rue the day.
+
+### Scoring
+
+- Scoring is simple, you get 10,000 points per win
+
+## Credits
+- CSS keyframes and animation are from [animate.css](https://github.com/daneden/animate.css) by [Daniel Eden](https://github.com/daneden)
+- package.json, gulpfile.js and other configuration files from [knowthecode](https://knowthecode.io/)
+  I am one of her students.
+
+## License 
+
+GNU General Public License 2.0+

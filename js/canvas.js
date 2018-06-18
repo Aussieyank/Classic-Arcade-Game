@@ -8,7 +8,6 @@ let  wonHTML = document.getElementById( 'wonHTML' ),
    setupButton = document.getElementById('button__select-character'),
    lostButton = document.getElementById('button__lost-game'),
    wonButton = document.getElementById('button__won-game');
-
 /**
  * @description Open modal and give stats when user wins
  */
@@ -28,7 +27,8 @@ setupButton.addEventListener('click', closeSetupModal, false)
  * @description Open modal and give stats when user wins
  */
 function closeWonModal() {
-   location.reload();
+   wonClasses.add( 'none' );
+   wonClasses.remove( 'active' );
 }
 
 wonButton.addEventListener('click', closeWonModal, false)
@@ -37,8 +37,9 @@ wonButton.addEventListener('click', closeWonModal, false)
  * @description open modal and give stats when user loses
  */
 function closeLostModal() {
-   location.reload();
-}
+   //background-image: url("../images/sandpaper.png");
+   lostClasses.add( 'none' );
+   lostClasses.remove( 'active' );}
 
 lostButton.addEventListener('click', closeLostModal, false)
 

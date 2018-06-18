@@ -61,12 +61,25 @@
    <div class="screen__content game-board-container">
       <!-- game canvas goes in here -->
    </div>
-
-   <!--<div>danny &nbsp;<span id="selected-char"></span></div>-->
 </section> <!-- Game Screen -->
 
+<!-- 'You lost' Modal -->
+<section id="lost-game" class="modal none modal__lost-game red">
+   <div class="modal-content">
+      <div class="loader">
+         <i class="fa fa-ambulance" aria-hidden="true"></i>
+      </div>
+      <h2>Oh bummer, you lost!</h2>
+      <p id="lostHTML"></p>
+      <p>Sorry, but you got creamed by a lady bug.</p>
+      <p class="messageHTML"></p>
+      <button id='button__lost-game' class="button play-button">Play again!
+      </button>
+   </div>
+</section> <!-- 'You lost' Modal -->
+
 <!-- 'Game Over' Modal -->
-<section id="won-game" class="modal none modal__won-game">
+<section id="won-game" class="modal none modal__won-game green">
    <div class="modal-content">
       <div class="loader">
          <i class="fa fa-check" aria-hidden="true"></i>
@@ -78,21 +91,6 @@
    </div>
 </section> <!-- 'Game Over' Modal -->
 
-<!-- 'You lost' Modal -->
-<section id="lost-game" class="modal none modal__lost-game">
-   <div class="modal-content">
-      <div class="loader">
-         <i class="fa fa-clock-o" aria-hidden="true"></i>
-      </div>
-      <h2>Oh bummer, you lost!</h2>
-      <p id="lostHTML"></p>
-      <p>Sorry, but the clock ran out before you could complete this round.</p>
-      <p class="messageHTML"></p>
-      <button id='button__lost-game' class="button play-button">Play again!
-      </button>
-   </div>
-</section> <!-- 'You lost' Modal -->
-
 <script src="js/views/Modal.js"></script>
 <script src="js/canvas.js"></script>
 <script src="js/app.js"></script>
@@ -101,5 +99,6 @@
 <script src="js/views/View.js"></script>
 <script src="js/players/Player.js"></script>
 <script src="js/players/Enemy.js"></script>
+
 </body>
 </html>

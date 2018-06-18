@@ -73,3 +73,221 @@
    70% { transform: translateY(300px); }
    90% { transform: translateY(360px); }
 }
+
+/*
+ * Modals
+ *-------------------------------------*/
+.none {
+   display: none;
+}
+
+.block {
+   display: block;
+}
+
+/*!*background-color: #fff;*!*/
+.modal__lost-game {
+   display: none;
+   background-color: #e06e3d;
+   color:            #000;
+
+   text-align: center;
+   width: 100%;
+   height: 100%;
+   margin: 0 auto;
+   padding: 10px;
+
+   font-size: 20px;
+
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+}
+
+.modal__won-game {
+   display: none;
+
+   text-align: center;
+   background-color: #fff;
+   width: 100%;
+   height: 100%;
+   margin: 0 auto;
+   padding: 10px;
+
+   font-size: 20px;
+
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+}
+
+.modal.active {
+   max-width: 100%;
+   display: flex;
+   -webkit-box-orient: vertical;
+   -webkit-box-direction: normal;
+   flex-direction: column;
+
+   -webkit-box-pack: center;
+   justify-content: center;
+
+   animation: 1s fadeIn;
+}
+
+.modal__info-game {
+   display: none;
+   background-color: #fff;
+
+   text-align: left;
+   width: 80%;
+   /*height: 100%;*/
+   margin: 0 auto;
+   padding: 10px;
+
+   font-size: 20px;
+
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+}
+
+.modal.active2 {
+   max-width: 80%;
+   display: flex;
+   -webkit-box-orient: vertical;
+   -webkit-box-direction: normal;
+   flex-direction: column;
+   overflow-y: auto;
+   animation: 1s fadeIn;
+}
+
+.modal .loader {
+   font-size: 60px;
+   font-weight: 100;
+   color: #000;
+
+   animation: 1s scaleBigText 1s;
+}
+
+.modal__info-game .loader,
+.modal__lost-game .loader {
+   color: #000;
+}
+
+#info-span,
+#restart-span {
+   width: 54px;
+   height: 54px;
+   display: grid;
+   justify-items: center;
+   align-items: center;
+   background-color: #e06e3d;
+   color:            #fff;
+   border-radius: 50%;
+   box-shadow:    5px 5px 20px 0 rgba(46, 61, 73, 0.5);
+}
+
+
+
+/*
+ * Keyframes - from animate.css
+ *-------------------------------------*/
+
+@keyframes fadeIn {
+   from {
+      opacity: 0;
+   }
+
+   to {
+      opacity: 1;
+   }
+}
+
+@keyframes riseUp {
+   from {
+      -webkit-transform: translateY(0);
+      transform:         translateY(0);
+      visibility:        visible;
+   }
+
+   100% {
+      -webkit-transform: translateY(-1750px);
+      transform:         translateY(-1750px);
+   }
+}
+
+@keyframes rubberBand {
+   from {
+      transform: scale3d(1, 1, 1);
+   }
+
+   30% {
+      transform: scale3d(1.25, 0.75, 1);
+   }
+
+   40% {
+      transform: scale3d(0.75, 1.25, 1);
+   }
+
+   50% {
+      transform: scale3d(1.15, 0.85, 1);
+   }
+
+   65% {
+      transform: scale3d(.95, 1.05, 1);
+   }
+
+   75% {
+      transform: scale3d(1.05, .95, 1);
+   }
+
+   to {
+      transform: scale3d(1, 1, 1);
+   }
+}
+
+@keyframes wobble {
+   from {
+      transform: none;
+   }
+
+   15% {
+      transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
+   }
+
+   30% {
+      transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg);
+   }
+
+   45% {
+      transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg);
+   }
+
+   60% {
+      transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg);
+   }
+
+   75% {
+      transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg);
+   }
+
+   to {
+      transform: none;
+   }
+}
+
+@keyframes scaleBigText {
+   from {
+      font-size: 60px;
+   }
+
+   50% {
+      font-size: 120px;
+   }
+}

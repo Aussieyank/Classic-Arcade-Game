@@ -98,3 +98,11 @@
 .modal__lost-game .loader {
    color: #fff;
 }
+
+.modal__lost-game.red {
+   background-image: url("../images/sandpaper-red.png");
+}
+
+.modal__won-game.green {
+   background-image: url("../images/sandpaper-green.png");
+}
