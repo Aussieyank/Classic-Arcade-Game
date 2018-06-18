@@ -1,12 +1,3 @@
-let wonHTML = document.getElementById( 'wonHTML' ),
-   lostHTML = document.getElementById( 'lostHTML' ),
-
-   wonClasses = document.getElementById( 'won-game' ).classList,
-   lostClasses = document.getElementById( 'lost-game' ).classList,
-
-   lostButton = document.getElementById( 'button__lost-game' ),
-   wonButton = document.getElementById( 'button__won-game' );
-
 
 // Enemies our player must avoid
 let Enemy = function (x, y) {

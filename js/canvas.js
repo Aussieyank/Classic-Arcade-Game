@@ -1,4 +1,7 @@
-let setupClasses = document.getElementById('select-character').classList,
+let  wonHTML = document.getElementById( 'wonHTML' ),
+   lostHTML = document.getElementById( 'lostHTML' ),
+
+   setupClasses = document.getElementById('select-character').classList,
    wonClasses = document.getElementById('won-game').classList,
    lostClasses = document.getElementById('lost-game').classList,
 
