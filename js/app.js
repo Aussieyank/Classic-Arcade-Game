@@ -209,5 +209,5 @@ const charObj = {
          40: 'down'
       };
 
-      player.handleInput(allowedKeys[e.keyCode]);
+      player.parseInput(allowedKeys[e.keyCode]);
    });
