@@ -73,3 +73,7 @@
    70% { transform: translateY(300px); }
    90% { transform: translateY(360px); }
 }
+
+.squash {
+   animation: 1s rubberBand 1s;
+}

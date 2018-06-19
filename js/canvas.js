@@ -25,7 +25,8 @@ setupButton.addEventListener('click', closeSetupModal, false)
  * @description Open modal and give stats when user wins
  */
 function closeWonModal() {
-   location.reload();
+   wonClasses.remove('active');
+   wonClasses.add('hide');
 }
 
 wonButton.addEventListener('click', closeWonModal, false)
@@ -34,7 +35,8 @@ wonButton.addEventListener('click', closeWonModal, false)
  * @description open modal and give stats when user loses
  */
 function closeLostModal() {
-   location.reload();
+   lostClasses.remove('active');
+   lostClasses.add('hide');
 }
 
 lostButton.addEventListener('click', closeLostModal, false)
