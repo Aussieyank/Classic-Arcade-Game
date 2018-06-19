@@ -1,15 +1,5 @@
-<<<<<<< HEAD
-/**
- * @description Enemy prototype class
- * @param x
- * @param y
- * @constructor
- */
-let Enemy = function (x, y) {  // Enemies our player must avoid
-=======
 // Enemies our player must avoid
 let Enemy = function (x, y) {
->>>>>>> original2
    // Variables applied to each of our instances go here,
    // we've provided one for you to get started
 
