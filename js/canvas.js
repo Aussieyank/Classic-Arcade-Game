@@ -39,6 +39,8 @@ wonButton.addEventListener('click', closeWonModal, false)
 function closeLostModal() {
    lostClasses.remove('active');
    lostClasses.add('hide');
+   // document.getElementsByClassName('screen__header')[0].remove('active');
+   // document.getElementsByClassName('screen__header')[0].add('hide');
 }
 
 lostButton.addEventListener('click', closeLostModal, false)

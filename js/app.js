@@ -46,8 +46,6 @@ Enemy.prototype.update = function (dt) {
       player.x = 200;
       player.y = 380;
 
-      //this.score.innerText = 0;
-      document.getElementsByClassName('character__image')[0].classList.add('playerBounce');
       document.getElementById('lost-game').classList.add('active');
       document.getElementById('lost-game').classList.remove('hide');
       this.clearScore();
@@ -63,7 +61,6 @@ Enemy.prototype.update = function (dt) {
          player.y = 380;
          document.getElementById('won-game').classList.add('active');
          document.getElementById('won-game').classList.remove('hide');
-
       }
    }
 };

@@ -131,9 +131,8 @@
 }
 
 .modal__lost-game {
-   display: none;
+   /*display: none;*/
    background-image: url("../images/sandpaper-red.png");
-   /*background-color: #e06e3d;*/
    color:            #fff;
 
    text-align: center;
