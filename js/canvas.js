@@ -27,8 +27,8 @@ setupButton.addEventListener('click', closeSetupModal, false)
  * @description Open modal and give stats when user wins
  */
 function closeWonModal() {
-   wonClasses.add( 'none' );
-   wonClasses.remove( 'active' );
+   wonClasses.remove('active');
+   wonClasses.add('hide');
 }
 
 wonButton.addEventListener('click', closeWonModal, false)
@@ -37,9 +37,9 @@ wonButton.addEventListener('click', closeWonModal, false)
  * @description open modal and give stats when user loses
  */
 function closeLostModal() {
-   //background-image: url("../images/sandpaper.png");
-   lostClasses.add( 'none' );
-   lostClasses.remove( 'active' );}
+   lostClasses.remove('active');
+   lostClasses.add('hide');
+}
 
 lostButton.addEventListener('click', closeLostModal, false)
 

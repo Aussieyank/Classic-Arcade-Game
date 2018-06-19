@@ -10,7 +10,7 @@ class Modal {
       this.charHdr               = document.getElementById('game');
 
       //this.score                 = 0;
-      console.log( 'modalID: ' +modalID);
+      //console.log( 'modalID: ' +modalID);
    }
 
    /**

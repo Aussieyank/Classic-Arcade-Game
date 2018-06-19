@@ -1,4 +1,13 @@
 @charset "UTF-8";
+@keyframes scaleBigText {
+   from {
+      font-size: 60px;
+   }
+
+   50% {
+      font-size: 120px;
+   }
+}
 
 /*!
  * animate.css -http://daneden.me/animate
