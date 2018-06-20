@@ -1,0 +1,79 @@
+.screen {
+   max-width: 505px;
+   margin: 0 auto;
+   padding: 0;
+}
+
+.screen__header {
+   margin-top: 40px;
+}
+
+.screen__header  p {
+   margin-top: 75px;
+}
+
+.screen .game-control {
+   cursor: pointer;
+}
+
+.hide {
+   display: none;
+}
+
+/*
+ * Game Screen
+ *-------------------------------------*/
+
+.screen__header {
+   display: grid;
+   grid-template-columns: 2fr 1fr;
+   justify-content: space-between;
+   width: 100%;
+   /*max-width: 505px;*/
+}
+
+
+.screen__game h1,
+.screen__game p {
+   display: inline-block;
+   /*float: left;*/
+   margin-bottom: 0;
+}
+
+.screen__game p {
+   /*float: right;*/
+   font-size: 20px;
+}
+
+.screen__game canvas {
+   display: block;
+   margin: 0 auto;
+   padding: 0;
+}
+
+.playerBounce {
+   animation: bounce 4s cubic-bezier(.1,.25,1,.25) forwards;
+}
+
+.screen__content.game-board-container {
+   display: grid;
+   justify-self: center;
+   margin: 0 auto;
+}
+
+/**
+ * Bouncing animation
+ */
+
+@keyframes bounce {
+   60%, 80%, to {
+      transform: translateY(400px);
+      animation-timing-function: ease;
+   }
+   70% { transform: translateY(300px); }
+   90% { transform: translateY(360px); }
+}
+
+.squash {
+   animation: 1s rubberBand 1s;
+}

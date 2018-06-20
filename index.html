@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8">
+   <title>Lady Bugger</title>
+   <meta name="viewport" content="width=device-width, minimum-scale=1.0"/>
+   <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+   <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
+   <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Spinnaker">
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/keyframes.css">
+   <link rel="stylesheet" href="css/modal.css">
+   <link rel="stylesheet" href="css/screen.css">
+
+</head>
+<body>
+<!-- 'Pick Your Character' Modal -->
+<section id="select-character" class="preload modal character__setup">
+
+   <header class="character__header">
+      <h1>Lady Bugger</h1>
+      <h2>Pick Your Character</h2>
+   </header>
+
+   <div class="character__content active">
+
+      <ul class="character__container">
+         <li class="character__image ">
+            <img src="../images/char-boy.png" id="char-boy" class="charImg" data-character="char-boy" alt="Boy Character">
+         </li>
+         <li class="character__image ">
+            <img src="../images/char-cat-girl.png" id="char-cat-girl" class="charImg" data-character="char-cat-girl" alt="Cat Girl Character">
+         </li>
+         <li class="character__image ">
+            <img src="../images/char-horn-girl.png" id="char-horn-girl" class="charImg" data-character="char-horn-girl" alt="Horn Girl Character">
+         </li>
+         <li class="character__image ">
+            <img src="../images/char-pink-girl.png" id="char-pink-girl" class="charImg" data-character="char-pink-girl" alt="Pink Girl Character">
+         </li>
+         <li class="character__image ">
+            <img src="../images/char-princess-girl.png" id="char-princess-girl" class="charImg" data-character="char-princess-girl" alt="Princess Girl Character">
+         </li>
+      </ul>
+
+   </div>  <!-- .character__content -->
+
+   <footer class="character__footer">
+      <button id="button__select-character" class="button play-button">Play</button>
+   </footer>
+
+</section> <!-- 'Pick Your Character' Modal -->
+
+<!-- Game Screen -->
+<section id="game" class="screen screen__game">
+   <header class="screen__header">
+      <h1>Lady Bugger</h1>
+      <p>Score: <span id="score" class="block">0</span></p>
+   </header>
+
+   <div id="screen__content" class="screen__content game-board-container">
+      <!-- game canvas goes in here -->
+   </div>
+</section> <!-- Game Screen -->
+
+<!-- 'You lost' Modal -->
+<section id="lost-game" class="modal none modal__lost-game red">
+   <div class="modal-content">
+      <div class="loader">
+         <i class="fa fa-ambulance" aria-hidden="true"></i>
+      </div>
+      <h2>Oh bummer, you lost!</h2>
+      <p id="lostHTML"></p>
+      <p>Sorry, but you got squashed by a lady bug, how humiliating! </p>
+      <p class="messageHTML"></p>
+      <button id='button__lost-game' class="button play-button">Play again!
+      </button>
+   </div>
+</section> <!-- 'You lost' Modal -->
+
+<!-- 'Game Over' Modal -->
+<section id="won-game" class="modal none modal__won-game green">
+   <div class="modal-content">
+      <div class="loader">
+         <i class="fa fa-check" aria-hidden="true"></i>
+      </div>
+      <h2>Congratulations! You Won!</h2>
+      <p id="wonHTML"></p>
+      <button id='button__won-game' class="button play-button zoomIn">Play again!
+      </button>
+   </div>
+</section> <!-- 'Game Over' Modal -->
+
+<script src="js/views/Modal.js"></script>
+<script src="js/canvas.js"></script>
+<script src="js/app.js"></script>
+<script src="js/resources.js"></script>
+<script src="js/engine.js"></script>
+
+<script id="__bs_script__">//<![CDATA[
+document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.24.4'><\/script>".replace("HOST", location.hostname));
+//]]></script>
+</body>
+
+</html>
