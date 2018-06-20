@@ -6,7 +6,7 @@
    z-index: 50;
 
    text-align: center;
-   background-image: url("../images/sandpaper.png");
+   background-image: url("../../images/sandpaper.png");
 
    width: 100%;
    height: 100%;
@@ -132,7 +132,7 @@
 
 .modal__lost-game {
    /*display: none;*/
-   background-image: url("../images/sandpaper-red.png");
+   background-image: url("../../images/sandpaper-red.png");
    color:            #fff;
 
    text-align: center;
@@ -154,7 +154,7 @@
    display: none;
 
    text-align: center;
-   background-image: url("../images/sandpaper-green.png");
+   background-image: url("../../images/sandpaper-green.png");
    background-color: #fff;
    width: 100%;
    height: 100%;

@@ -22,13 +22,15 @@
     "gulp-babel": "~6",
     "gulp-cheerio": "~0",
     "gulp-concat": "~2",
+    "gulp-connect": "^5.5.0",
     "gulp-cssnano": "~2",
     "gulp-eslint": "~4",
-    "gulp-html5-lint": "^1.1.0",
+    "gulp-html": "^0.5.0",
     "gulp-notify": "~3",
     "gulp-plumber": "~1",
     "gulp-rename": "~1",
     "gulp-uglify": "~3",
     "gulp-util": "~3"
-  }
+  },
+  "dependencies": {}
 }

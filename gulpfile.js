@@ -9,20 +9,23 @@ const notify = require('gulp-notify');
 const plumber = require('gulp-plumber');
 const rename = require('gulp-rename');
 const uglify = require('gulp-uglify');
-//const browserSync = require('browser-sync').create();
+const browserSync = require('browser-sync').create();
+const reload = browserSync.reload;
 
 // Set assets paths.
 const paths = {
-   'css': ['css/style.css', 'css/screen.css', 'css/modal.css', 'css/keyframes.css'],
+   'css': ['app/css/style.css', 'app/css/screen.css', 'app/css/modal.css', 'app/css/keyframes.css'],
    'scripts': [
-      'js/app.js',
-      'js/engine.js',
-      'js/resources.js',
-      'js/views/View.js',
-      'js/players/Enemy.js',
-      'js/players/Player.js'
+      'app/js/app.js',
+      'app/js/engine.js',
+      'app/js/resources.js',
+      'app/js/views/View.js',
+      'app/js/players/Enemy.js',
+      'app/js/players/Player.js'
    ]
 };
+
+const htmlWatch = 'app/*.html';
 
 const destFolder = 'dist/';
 
@@ -63,6 +66,7 @@ gulp.task('css:concat', () =>
 
       // Save the file.
       .pipe(gulp.dest(destFolder))
+      .pipe(browserSync.stream())
 );
 
 /**
@@ -78,6 +82,7 @@ gulp.task('cssnano', ['css:concat'], () =>
       }))
       .pipe(rename('style.min.css'))
       .pipe(gulp.dest(destFolder))
+      .pipe(browserSync.stream())
 );
 
 /**
@@ -104,6 +109,7 @@ gulp.task('concat', () =>
 
       // Save the file.
       .pipe(gulp.dest(destFolder))
+      .pipe(browserSync.stream())
 );
 
 /**
@@ -124,6 +130,7 @@ gulp.task('uglify', ['concat'], () =>
          'mangle': false
       }))
       .pipe(gulp.dest(destFolder))
+      .pipe(browserSync.stream())
 );
 
 /**
@@ -136,35 +143,51 @@ gulp.task('js:lint', () =>
       .pipe(eslint())
       .pipe(eslint.format())
       .pipe(eslint.failAfterError())
+      .pipe(browserSync.stream())
 );
-
 
 /**
  * Process tasks and reload browsers on file changes.
  *
  * https://www.npmjs.com/package/browser-sync
  */
-gulp.task('watch', function () {
-   var watchSettings = {
-      browserSync:	{
-         open: false,             // Open project in a new tab?
-         injectChanges: false,     // Auto inject changes instead of full reload
-         proxy: "http://lady.test:3000",  // Use http://domainname.tld:3000 to use BrowserSync
-         watchOptions: {
-            debounceDelay: 1000  // Wait 1 second before injecting
-         }
+gulp.task('browser-sync', function () {
+   browserSync.init({
+      server: {
+         baseDir: 'app/',
       }
-   }
+   });
+});
+
+
+gulp.task('watch', function () {
+   browserSync.init({
+      server: {
+         serveStaticOptions: {
+            extensions: ['html']
+         },
+         baseDir: 'app/',
+         index: 'index.html'
+      }
+   });
+
+
 
    // Run tasks when files change.
    gulp.watch(paths.css, ['styles']);
+   gulp.watch(htmlWatch, reload);
    gulp.watch(paths.scripts, ['scripts']);
+});
+
+gulp.task('reload', function () {
+   browserSync.reload;
 });
 
 /**
  * Create individual tasks.
  */
+//gulp.task('html', ['html5-lint']);
 gulp.task('scripts', ['uglify']);
 gulp.task('styles', ['cssnano']);
 gulp.task('lint', ['js:lint']);
-gulp.task('default', ['styles', 'scripts']);
+gulp.task('default', ['styles', 'scripts', 'watch', 'reload']);
